@@ -141,6 +141,12 @@ text = "Quest card"
 
 [node name="Bartering" type="Node2D" parent="SellingSystem"]
 
+[node name="Cashout" type="Button" parent="SellingSystem/Bartering"]
+offset_left = 18000.0
+offset_top = 6000.0
+offset_right = 18032.0
+offset_bottom = 6032.0
+
 [node name="HigherLower" type="Node2D" parent="SellingSystem/Bartering"]
 position = Vector2(9000, 3000)
 
@@ -178,3 +184,6 @@ offset_bottom = 55.0
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/remXl" to="SellingSystem" method="_on_rem_xl_pressed"]
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/Sell" to="SellingSystem" method="_on_sell_pressed"]
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/Barter" to="SellingSystem" method="_on_barter_pressed"]
+[connection signal="pressed" from="SellingSystem/Bartering/Cashout" to="SellingSystem" method="_on_cashout_pressed"]
+[connection signal="pressed" from="SellingSystem/Bartering/HigherLower/Higher" to="SellingSystem" method="_on_higher_pressed"]
+[connection signal="pressed" from="SellingSystem/Bartering/HigherLower/Lower" to="SellingSystem" method="_on_lower_pressed"]

@@ -49,6 +49,7 @@ func _ready():
 
 #Detects where Chimata is going to check which ore she picks up
 #Removes the ore from the mine
+#Uses special items if needed
 
 func _physics_process(delta):
 	#Move counter tag
@@ -59,22 +60,30 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("walkLeft"):
 			chimataLocation[0] -= 1
 			updateLocation()
-			mineTile()
+			mineTile(0,0)
 			
 		if Input.is_action_just_pressed("walkRight"):
 			chimataLocation[0] += 1
 			updateLocation()
-			mineTile()
+			mineTile(0,0)
 			
 		if Input.is_action_just_pressed("walkDown"):
 			chimataLocation[1] += 1
 			updateLocation()
-			mineTile()
+			mineTile(0,0)
 			
 		if Input.is_action_just_pressed("walkUp"):
 			chimataLocation[1] -= 1
 			updateLocation()
-			mineTile()
+			mineTile(0,0)
+			
+		#Special actions
+		if Input.is_action_just_pressed("bomb"):
+			if Global.bombQty > 0:
+				for i in range(1-Global.bombStr,Global.bombStr):
+					for j in range(1-Global.bombStr,Global.bombStr):
+						mineTile(i,j)
+				Global.bombQty -= 1
 			
 	#Brings up the minigame end screen (stats and button)
 	elif moves == 0:
@@ -86,10 +95,10 @@ func _physics_process(delta):
 		+ " dragon gem chunks\r" + str(ore_xl) + " dragon gem clusters" 
 		
 #Executes multiple mining operations
-func mineTile():
-	add_ore(mine[locationX][locationY])
-	mine[locationX][locationY] = 0
-	tilemap.set_cell(Vector2i(locationX,locationY),-1)
+func mineTile(offsetX,offsetY):
+	add_ore(mine[locationX+offsetX][locationY+offsetY])
+	mine[locationX+offsetX][locationY+offsetY] = 0
+	tilemap.set_cell(Vector2i(locationX+offsetX,locationY+offsetY),-1)
 
 #Updates chimata's current location
 #Decrements the amount of moves Chimata has

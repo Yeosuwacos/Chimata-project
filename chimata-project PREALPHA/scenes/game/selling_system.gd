@@ -85,8 +85,9 @@ func _on_barter_pressed() -> void:
 #Higher lower minigame
 func HigherLower(wager):
 	$Bartering/HigherLower.position = Vector2(900,300)
-	Global.nb1 = randi_range(1,12)
+	Global.nb1 = randi_range(3,10)
 	Global.nb2 = randi_range(1,12)
+	Global.wager = wager
 	
 	#Makes sure the two numbers arent equal
 	while Global.nb2 == Global.nb1:
@@ -98,8 +99,9 @@ func HigherLower(wager):
 func sell(total):
 	Global.funds += total
 	$GUI/Funds.text = "Funds: " + str(Global.funds)
+	$Bartering/HigherLower.position = Vector2(9000,3000)
 
-#Removing the sold items
+#Removing the sold items/secondary variables
 func remove_stock():
 	Global.ability_card_xs -= Global.sold_xs
 	Global.ability_card_s -= Global.sold_s
@@ -113,8 +115,38 @@ func remove_stock():
 	Global.sold_l = 0
 	Global.sold_xl = 0
 	
+	$Bartering/HigherLower/Card1.text = ""
+	$Bartering/HigherLower/Card2.text = ""
+	
 	$CardSale/Labels/Xs.text = "Lesser ability cards " + str(Global.sold_xs) + "/" + str(Global.ability_card_xs)
 	$CardSale/Labels/S.text = "Ability cards " + str(Global.sold_s) + "/" + str(Global.ability_card_s)
 	$CardSale/Labels/M.text = "Greater ability cards " + str(Global.sold_m) + "/" + str(Global.ability_card_m)
 	$CardSale/Labels/L.text = "Quest ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
 	$CardSale/Labels/Xl.text = "Special ability cards " + str(Global.sold_xl) + "/" + str(Global.ability_card_xl)
+
+#Variables for the higher-lower minigame
+func _on_higher_pressed() -> void:
+	$Bartering/HigherLower/Card2.text = str(Global.nb2)
+	if Global.nb1 < Global.nb2:
+		Global.wager *= 1.25
+		$Bartering/HigherLower/Card2.text += ": Win!"
+	elif Global.nb1 > Global.nb2:
+		Global.wager *= 0.75
+		$Bartering/HigherLower/Card2.text += ": Lose!"
+	$Bartering/Cashout.position = Vector2(900,268)
+
+func _on_lower_pressed() -> void:
+	$Bartering/HigherLower/Card2.text = str(Global.nb2)
+	if Global.nb1 > Global.nb2:
+		Global.wager *= 1.25
+		$Bartering/HigherLower/Card2.text += ": Win!"
+	elif Global.nb1 < Global.nb2:
+		Global.wager *= 0.75
+		$Bartering/HigherLower/Card2.text += ": Lose!"
+	$Bartering/Cashout.position = Vector2(900,268)
+
+#Ends the bartering process
+func _on_cashout_pressed() -> void:
+	remove_stock()
+	sell(ceili(Global.wager))
+	$Bartering/Cashout.position = Vector2(9000,3000) 
