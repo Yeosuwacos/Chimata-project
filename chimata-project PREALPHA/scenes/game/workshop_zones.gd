@@ -13,7 +13,7 @@ func _ready():
 	$gotoMarket.position = Vector2(0,0)
 	
 	#Setup the available card fabrication options
-	$cardOptions.position = Vector2i(50,500)
+	$cardOptions.visible = true
 	
 	$cardOptions/cardXs/Price.text = "Card 1\r" + str(Global.dragon_gem_xs) + "/25 dragon gem dust"
 
@@ -85,7 +85,7 @@ func _physics_process(delta):
 #Card maker minigame
 func make_card():
 	#Displays the minigame window and enables it
-	$cardOptions.position = Vector2(5120,2560)
+	$cardOptions.visible = false
 	$cardMinigames/Game1.position = Vector2(512,256)
 	Global.game1Running = true
 

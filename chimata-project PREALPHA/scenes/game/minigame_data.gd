@@ -22,7 +22,7 @@ func _ready():
 	
 	#Makes the camera and the move counter follow chimata
 	Global.follow = true
-	$mineWindow/moveCounter.position = Vector2((chimataLocation[0]*128+832),(chimataLocation[1]*128-464))
+	#$mineWindow/moveCounter.position = Vector2((chimataLocation[0]*128+832),(chimataLocation[1]*128-464))
 	
 	#Creates the mine as a 2D grid
 	#Adds values to each tile between 0 and 5
@@ -55,10 +55,6 @@ func _ready():
 #Uses special items if needed
 
 func _physics_process(delta):
-	#Move counter tag
-	$mineWindow/moveCounter.text = str(moves) + " moves"
-	$mineWindow/moveCounter.position = Vector2((chimataLocation[0]*128+832),(chimataLocation[1]*128-464))
-	
 	#Manages the boundaries
 	if chimataLocation[0] <= 0:
 		Global.maxLEFT = false
@@ -81,7 +77,10 @@ func _physics_process(delta):
 		Global.maxDOWN = true
 	
 	#Makes sure that you cant go out of bounds
-	if moves > 0:
+	if moves > 0 && Global.isMining == true:
+		#Move counter
+		$mineWindow/Labels/moveCounter.text = str(moves) + " moves"
+		
 		if Input.is_action_just_pressed("walkLeft"):
 			if chimataLocation[0] > 0:
 				chimataLocation[0] -= 1
@@ -117,9 +116,12 @@ func _physics_process(delta):
 	#Brings up the minigame end screen (stats and button)
 	elif moves == 0:
 		Global.isMining = false
-		$mineWindow/returnSurface.position = Vector2((chimataLocation[0]*128-832),(chimataLocation[1]*128-464))
+		#Removes move counter
+		$mineWindow/Labels/moveCounter.text = ""
 		
-		$mineWindow/returnSurface/Stats.text = "You mined:\r" + str(ore_xs) + " dragon gem dust\r" \
+		#Displays surface
+		$mineWindow/Labels/returnSurface.visible = true
+		$mineWindow/Labels/returnSurface/Stats.text = "You mined:\r" + str(ore_xs) + " dragon gem dust\r" \
 		+ str(ore_s) + " dragon gem pieces\r" + str(ore_m) + " dragon gems\r" + str(ore_l) \
 		+ " dragon gem chunks\r" + str(ore_xl) + " dragon gem clusters" 
 		
@@ -160,3 +162,15 @@ func _on_back_pressed() -> void:
 	Global.dragon_gem_xl += ore_xl
 	queue_free()
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/game/mines.tscn")
+
+#Ends the mining game early
+func _on_back_early_pressed() -> void:
+	Global.isMining = false
+	#Removes move counter 
+	$mineWindow/Labels/moveCounter.text = ""
+	
+	#Displays surface
+	$mineWindow/Labels/returnSurface.visible = true
+	$mineWindow/Labels/returnSurface/Stats.text = "You mined:\r" + str(ore_xs) + " dragon gem dust\r" \
+	+ str(ore_s) + " dragon gem pieces\r" + str(ore_m) + " dragon gems\r" + str(ore_l) \
+	+ " dragon gem chunks\r" + str(ore_xl) + " dragon gem clusters" 

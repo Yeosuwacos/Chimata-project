@@ -13,6 +13,8 @@ script = ExtResource("3_xg03h")
 target_position = Vector2(0, 1500)
 
 [node name="cardOptions" type="Node2D" parent="WorkshopZones"]
+visible = false
+position = Vector2(0, 128)
 
 [node name="cardXs" type="Node2D" parent="WorkshopZones/cardOptions"]
 
