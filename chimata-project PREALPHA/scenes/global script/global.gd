@@ -2,7 +2,7 @@ extends Node2D
 
 #Resolution settings
 var res = Vector2i(1920,1080)
-var zoom = 1
+var amp = 3
 
 #Options menu settings
 var menuOpen = false
