@@ -23,9 +23,6 @@ var maxRIGHT = true
 #Mine shop
 var mShopOpen = false
 
-#Workshop minigame flag
-var game1Running = false
-
 #Market minigame variables
 var nb1 = 0
 var nb2 = 0
@@ -39,8 +36,8 @@ var sold_l = 0
 var sold_xl = 0
 
 #Mining resources
-var dragon_gem_xs = 0
-var dragon_gem_s = 0
+var dragon_gem_xs = 100
+var dragon_gem_s = 100
 var dragon_gem_m = 0
 var dragon_gem_l = 0
 var dragon_gem_xl = 0
