@@ -22,6 +22,16 @@ func _on_shop_button_pressed() -> void:
 	elif Global.mShopOpen == true:
 		$Shop.position = Vector2(9000,3000)
 		Global.mShopOpen = false
+		
+#Opens the idle shop
+func _on_idle_shop_button_pressed() -> void:
+	if Global.iShopOpen == false:
+		$IdleShop.position = Vector2(Global.res.x/2,Global.res.y/2)
+		Global.iShopOpen = true
+		
+	elif Global.iShopOpen == true:
+		$IdleShop.position = Vector2(9000,3000)
+		Global.iShopOpen = false
 
 func _input(event):
 	if event is InputEventKey and event.pressed and not event.echo:

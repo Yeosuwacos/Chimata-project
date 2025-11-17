@@ -11,6 +11,7 @@ extends Node2D
 #Sets the amount of utilities 
 @onready var bombs = Global.bombQty
 @onready var tps = Global.tpQty
+@onready var adds = Global.addQty
 
 func _ready():
 	#Sets the isMining flag to true
@@ -86,25 +87,25 @@ func _physics_process(delta):
 			if chimataLocation[0] > 0:
 				chimataLocation[0] -= 1
 				updateLocation()
-				mineTile(0,0)
+				mineTile(0,0,Global.addActive)
 			
 		if Input.is_action_just_pressed("walkRight"):
 			if chimataLocation[0] < 100:
 				chimataLocation[0] += 1
 				updateLocation()
-				mineTile(0,0)
+				mineTile(0,0,Global.addActive)
 			
 		if Input.is_action_just_pressed("walkDown"):
 			if chimataLocation[1] < 500:
 				chimataLocation[1] += 1
 				updateLocation()
-				mineTile(0,0)
+				mineTile(0,0,Global.addActive)
 			
 		if Input.is_action_just_pressed("walkUp"):
 			if chimataLocation[1] > 0:
 				chimataLocation[1] -= 1
 				updateLocation()
-				mineTile(0,0)
+				mineTile(0,0,Global.addActive)
 			
 		#Special actions
 		if Input.is_action_just_pressed("bomb"):
@@ -112,7 +113,7 @@ func _physics_process(delta):
 			if bombs > 0 && chimataLocation[1] > Global.bombStr:
 				for i in range(1-Global.bombStr,Global.bombStr):
 					for j in range(1-Global.bombStr,Global.bombStr):
-						mineTile(i,j)
+						mineTile(i,j,Global.addActive)
 				bombs -= 1
 				
 		if Input.is_action_just_pressed("tp"):
@@ -120,9 +121,13 @@ func _physics_process(delta):
 			if tps > 0 && (chimataLocation[1] + Global.tpStr) < 500:
 				chimataLocation[1] += Global.tpStr
 				updateLocation()
-				mineTile(0,0)
+				mineTile(0,0,Global.addActive)
 				tps -= 1
-			
+				
+		if Input.is_action_just_pressed("addStr"):
+			if adds > 0:
+				Global.addActive = true
+				adds -= 1
 	#Brings up the minigame end screen (stats and button)
 	elif moves == 0:
 		Global.isMining = false
@@ -136,8 +141,8 @@ func _physics_process(delta):
 		+ " dragon gem chunks\r" + str(ore_xl) + " dragon gem clusters" 
 		
 #Executes multiple mining operations
-func mineTile(offsetX,offsetY):
-	add_ore(mine[locationX+offsetX][locationY+offsetY])
+func mineTile(offsetX,offsetY,mult):
+	add_ore(mine[locationX+offsetX][locationY+offsetY],mult)
 	mine[locationX+offsetX][locationY+offsetY] = 0
 	tilemap.set_cell(Vector2i(locationX+offsetX,locationY+offsetY),-1)
 
@@ -148,18 +153,22 @@ func updateLocation():
 	locationY = chimataLocation[1]
 	moves -= 1
 
-#Adds the corresponding 
-func add_ore(nb):
+#Adds the corresponding ore and multiplier
+func add_ore(nb,mult):
+	var str = 1
+	if mult == true:
+		str = Global.addStr
 	if nb == 1:
-		ore_xs += 1
+		ore_xs += str
 	if nb == 2:
-		ore_s += 1
+		ore_s += str
 	if nb == 3:
-		ore_m += 1
+		ore_m += str
 	if nb == 4:
-		ore_l += 1
+		ore_l += str
 	if nb == 5:
-		ore_xl += 1
+		ore_xl += str
+	Global.addActive = false
 
 #Ends the mining session and returns to the surface
 func _on_back_pressed() -> void:

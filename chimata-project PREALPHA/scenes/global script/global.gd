@@ -17,6 +17,13 @@ var bombQty = 1
 var tpStr = 5
 var tpQty = 1
 
+var addStr = 2
+var addQty = 1
+var addActive = false
+
+#Idler shop variables
+var idleXs = 0
+
 #Chimata camera flag
 var follow = false
 var maxUP = true
@@ -27,6 +34,7 @@ var isMoving = true
 
 #Mine shop
 var mShopOpen = false
+var iShopOpen = false
 
 #Market minigame variables
 var nb1 = 0

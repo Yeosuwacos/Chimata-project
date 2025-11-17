@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu802wrejoxy7"]
+[gd_scene load_steps=5 format=3 uid="uid://bu802wrejoxy7"]
 
 [ext_resource type="Script" uid="uid://bxanlmg4sgl3u" path="res://scenes/game/mines.gd" id="1_fyqyq"]
 [ext_resource type="Script" uid="uid://bldynvbs8ownu" path="res://scenes/game/mine_zones.gd" id="3_2au7w"]
 [ext_resource type="Script" uid="uid://dlii2oup33qw1" path="res://scenes/game/shop.gd" id="3_yh3sh"]
+[ext_resource type="Script" uid="uid://bsyo62gccx47c" path="res://scenes/game/idle_shop.gd" id="4_yh3sh"]
 
 [node name="Mines" type="Node2D"]
 script = ExtResource("1_fyqyq")
@@ -12,6 +13,12 @@ offset_left = 100.0
 offset_right = 200.0
 offset_bottom = 100.0
 text = "Shop"
+
+[node name="IdleShopButton" type="Button" parent="."]
+offset_left = 200.0
+offset_right = 300.0
+offset_bottom = 100.0
+text = "Idling"
 
 [node name="MineZones" type="Node2D" parent="."]
 script = ExtResource("3_2au7w")
@@ -43,8 +50,19 @@ offset_top = 128.0
 offset_right = 128.0
 offset_bottom = 192.0
 
+[node name="IdleShop" type="Node2D" parent="."]
+position = Vector2(9000, 3000)
+script = ExtResource("4_yh3sh")
+
+[node name="idlerXs" type="Button" parent="IdleShop"]
+offset_right = 128.0
+offset_bottom = 64.0
+text = "+1 xs/s"
+
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="IdleShopButton" to="." method="_on_idle_shop_button_pressed"]
 [connection signal="pressed" from="MineZones/StartMining" to="MineZones" method="_on_start_mining_pressed"]
 [connection signal="pressed" from="Shop/Moves" to="Shop" method="_on_moves_pressed"]
 [connection signal="pressed" from="Shop/Bombs" to="Shop" method="_on_bombs_pressed"]
 [connection signal="pressed" from="Shop/BombPower" to="Shop" method="_on_bomb_power_pressed"]
+[connection signal="pressed" from="IdleShop/idlerXs" to="IdleShop" method="_on_idler_xs_pressed"]
