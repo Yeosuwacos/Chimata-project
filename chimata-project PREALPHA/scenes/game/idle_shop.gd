@@ -7,6 +7,7 @@ func _ready():
 #Buys idle harvesters
 func _on_idler_xs_pressed() -> void:
 	if Global.funds >= Prices.idleXs:
+		Global.funds -= Prices.idleXs
 		Global.idleXs += 1
 		Prices.idleXsBought += 1
 		Prices.idleXs += 100*Prices.idleXsBought**1.6
