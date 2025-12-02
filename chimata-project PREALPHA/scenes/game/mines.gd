@@ -16,6 +16,9 @@ func _ready():
 #Opens the mine shop
 func _on_shop_button_pressed() -> void:
 	if Global.mShopOpen == false:
+		#Creates random dialogue
+		$Shop/mDialogue.text = Dialogue.mineShopLines.pick_random()
+		
 		$Shop.position = Vector2(Global.res.x/2,Global.res.y/2)
 		Global.mShopOpen = true
 		

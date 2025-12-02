@@ -21,6 +21,7 @@ Idler="*res://scenes/global script/idler.gd"
 Gui="*res://scenes/menu/gui.tscn"
 Global="*res://scenes/global script/global.tscn"
 Prices="*res://scenes/global script/prices.tscn"
+Dialogue="*res://dialogue.gd"
 
 [display]
 

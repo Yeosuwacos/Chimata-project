@@ -5,6 +5,7 @@ func _ready():
 	$Moves.text = "+10 moves: " + str(floori(Prices.MoreMoves))
 	$Bombs.text = "+1 bomb: " + str(floori(Prices.MoreBombs))
 	$BombPower.text = "+Bomb power: " + str(floori(Prices.BombPower))
+	$Momoyo.scale = Vector2(400.0/$Momoyo.texture.get_width(),500.0/$Momoyo.texture.get_height())
 
 #Buys more moves
 func _on_moves_pressed() -> void:

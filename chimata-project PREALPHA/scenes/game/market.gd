@@ -15,7 +15,7 @@ func _ready():
 	#GUI initialization
 	$SellingSystem/CardSale.position = Vector2i(50,50)
 	$SellingSystem/GUI.position = Vector2i(Global.res.x-100,Global.res.y-50)
-	$SellingSystem/GUI/Funds.text = "Funds: " + str(Global.funds)
+	$SellingSystem/GUI/Funds.text = "Funds: " + str(floori(Global.funds))
 	
 	#Settings initialization
 	add_child(optionPopup)

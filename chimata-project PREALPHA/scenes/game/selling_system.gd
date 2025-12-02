@@ -5,8 +5,8 @@ func _ready():
 	$CardSale/Labels/Xs.text = "Lesser ability cards " + str(Global.sold_xs) + "/" + str(Global.ability_card_xs)
 	$CardSale/Labels/S.text = "Ability cards " + str(Global.sold_s) + "/" + str(Global.ability_card_s)
 	$CardSale/Labels/M.text = "Greater ability cards " + str(Global.sold_m) + "/" + str(Global.ability_card_m)
-	$CardSale/Labels/L.text = "Special ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
-	$CardSale/Labels/Xl.text = "Quest ability cards " + str(Global.sold_xl) + "/" + str(Global.ability_card_xl)
+	$CardSale/Labels/L.text = "Quest ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
+	$CardSale/Labels/Xl.text = "Special ability cards " + str(Global.sold_xl) + "/" + str(Global.ability_card_xl)
 
 #Adding or removing cards for sale
 
@@ -47,7 +47,7 @@ func _on_rem_m_pressed() -> void:
 func _on_add_l_pressed() -> void:
 	if Global.sold_l < Global.ability_card_l:
 		Global.sold_l += 1
-		$CardSale/Labels/L.text = "Special ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
+		$CardSale/Labels/L.text = "Quest ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
 
 func _on_rem_l_pressed() -> void:
 	if Global.sold_l > 0:
@@ -98,7 +98,7 @@ func HigherLower(wager):
 #Confirming a sale and updating the amount
 func sell(total):
 	Global.funds += total
-	$GUI/Funds.text = "Funds: " + str(Global.funds)
+	$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
 	$Bartering/HigherLower.position = Vector2(9000,3000)
 
 #Removing the sold items/secondary variables
