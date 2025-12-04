@@ -15,11 +15,8 @@ func set_hand_from_atlas(atlas_coords: Vector2i):
 #Sets the hand texture
 func _physics_process(delta):
 	position -= transform.x * speed * delta
-	if type == "up":
-		set_hand_from_atlas(Vector2i(0,0))
-	elif type == "down":
-		set_hand_from_atlas(Vector2i(1,0))
-	elif type == "right":
-		set_hand_from_atlas(Vector2i(2,0))
-	elif type == "left":
-		set_hand_from_atlas(Vector2i(3,0))
+	match type:
+		"up": set_hand_from_atlas(Vector2i(0,0))
+		"down": set_hand_from_atlas(Vector2i(1,0))
+		"right": set_hand_from_atlas(Vector2i(2,0))
+		"left": set_hand_from_atlas(Vector2i(3,0))
