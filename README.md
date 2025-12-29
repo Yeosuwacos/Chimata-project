@@ -1,6 +1,14 @@
 # Chimata project
-Repository for Chimata's cozy game project
+Repository for Chimata's game project \
+[Project details/to-do list](https://docs.google.com/document/d/1SXA01oEBJRk9dd9tzjNKhZgsuglitaR-oyX5tLGfoO8/edit?usp=sharing)
 
-To do:
--Adapt resolution settings for 1280x720, 1920x1080 and 2560x1440
--Create the save file system
+#Controls
+__General__
+WASD - Movement (only A and D outside of the mine/worskhop games) \
+E - Confirm/Dialogue \]
+esc - Menu
+
+__Mines__ \
+X - Bomb \
+T - Teleport down \
+C - Increase ore yield
