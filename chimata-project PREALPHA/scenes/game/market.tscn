@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b00kh2h5kbxj1"]
+[gd_scene load_steps=6 format=3 uid="uid://b00kh2h5kbxj1"]
 
 [ext_resource type="Script" uid="uid://brc20ms50tw2o" path="res://scenes/game/market.gd" id="1_hpopc"]
 [ext_resource type="PackedScene" uid="uid://cs0ie4yghnk43" path="res://scenes/menu/gui.tscn" id="2_cn1e3"]
 [ext_resource type="Script" uid="uid://c78aofn4rjquj" path="res://scenes/game/selling_system.gd" id="3_cn1e3"]
 [ext_resource type="Script" uid="uid://52rfga556q4" path="res://scenes/game/market_zones.gd" id="3_s7log"]
+[ext_resource type="Texture2D" uid="uid://b2dg1b6dem85w" path="res://assets/sprites/sakuya.png" id="5_fwmry"]
 
 [node name="Market" type="Node2D"]
 script = ExtResource("1_hpopc")
@@ -166,6 +167,11 @@ offset_left = 32.0
 offset_top = 32.0
 offset_right = 72.0
 offset_bottom = 55.0
+
+[node name="Sakuya" type="Sprite2D" parent="SellingSystem/Bartering/HigherLower"]
+position = Vector2(-400, 0)
+texture = ExtResource("5_fwmry")
+centered = false
 
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/addXs" to="SellingSystem" method="_on_add_xs_pressed"]
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/addS" to="SellingSystem" method="_on_add_s_pressed"]

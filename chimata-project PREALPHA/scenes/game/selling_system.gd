@@ -7,7 +7,11 @@ func _ready():
 	$CardSale/Labels/M.text = "Greater ability cards " + str(Global.sold_m) + "/" + str(Global.ability_card_m)
 	$CardSale/Labels/L.text = "Quest ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
 	$CardSale/Labels/Xl.text = "Special ability cards " + str(Global.sold_xl) + "/" + str(Global.ability_card_xl)
-
+	
+	#Adjusts Sakuya's scale
+	$Bartering/HigherLower/Sakuya.scale = Vector2(400.0/$Bartering/HigherLower/Sakuya.texture.get_width(), \
+	500.0/$Bartering/HigherLower/Sakuya.texture.get_height())
+	
 #Adding or removing cards for sale
 
 #Xs
