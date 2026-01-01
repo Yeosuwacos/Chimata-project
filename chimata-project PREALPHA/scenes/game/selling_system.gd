@@ -134,12 +134,8 @@ func _on_d_down_pressed() -> void:
 		checkBust()
 
 func _on_stand_pressed() -> void:
-	$Bartering/Blackjack/Hit.disabled = true
-	$Bartering/Blackjack/DDown.disabled = true
-	$Bartering/Blackjack/Stand.disabled = true
+	disable()
 	while Global.marisaHand < 17:
-		if Global.marisaHand >= 17 || Global.marisaHand > 21:
-			break
 		Global.marisaHand += randi_range(1,10)
 		$Bartering/Blackjack/OpponentNb.text = str(Global.marisaHand)
 		
@@ -159,12 +155,21 @@ func checkBust():
 	if Global.playerHand > 21:
 		$Bartering/Blackjack/PlayerNb.text += " - Bust!"
 		Global.wager *= 0.5
+		disable()
+		$Bartering/Cashout.position = Vector2(900,268)
 	elif Global.playerHand == 21:
 		$Bartering/Blackjack/PlayerNb.text += " - Blackjack!"
 		Global.wager *= 1.5
+		disable()
+		$Bartering/Cashout.position = Vector2(900,268)
 	elif $Bartering/Blackjack/DDown.disabled == true:
 		_on_stand_pressed()
-	$Bartering/Cashout.position = Vector2(900,268)
+
+#Disables the buttons
+func disable():
+	$Bartering/Blackjack/Hit.disabled = true
+	$Bartering/Blackjack/DDown.disabled = true
+	$Bartering/Blackjack/Stand.disabled = true
 
 #Confirming a sale and updating the amount
 func sell(total):
