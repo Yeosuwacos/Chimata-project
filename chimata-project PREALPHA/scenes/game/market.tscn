@@ -28,68 +28,70 @@ position = Vector2(256, 256)
 
 [node name="Buttons" type="Node2D" parent="SellingSystem/CardSale"]
 
-[node name="addXs" type="Button" parent="SellingSystem/CardSale/Buttons"]
-offset_right = 32.0
-offset_bottom = 32.0
+[node name="AddRem" type="GridContainer" parent="SellingSystem/CardSale/Buttons"]
+offset_right = 138.0
+offset_bottom = 171.0
+columns = 3
+
+[node name="addXs" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
 text = "+"
 
-[node name="addS" type="Button" parent="SellingSystem/CardSale/Buttons"]
-offset_top = 32.0
-offset_right = 32.0
-offset_bottom = 64.0
+[node name="remXs" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
+text = "-"
+
+[node name="Xs" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
+text = "Lesser card"
+
+[node name="addS" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
 text = "+"
 
-[node name="addM" type="Button" parent="SellingSystem/CardSale/Buttons"]
-offset_top = 64.0
-offset_right = 32.0
-offset_bottom = 96.0
+[node name="remS" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
+text = "-"
+
+[node name="S" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
+text = "Card"
+
+[node name="addM" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
 text = "+"
 
-[node name="addL" type="Button" parent="SellingSystem/CardSale/Buttons"]
-offset_top = 96.0
-offset_right = 32.0
-offset_bottom = 128.0
+[node name="remM" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
+text = "-"
+
+[node name="M" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
+text = "Greater card"
+
+[node name="addL" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
 text = "+"
 
-[node name="addXl" type="Button" parent="SellingSystem/CardSale/Buttons"]
-offset_top = 128.0
-offset_right = 32.0
-offset_bottom = 160.0
+[node name="remL" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
+text = "-"
+
+[node name="L" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
+text = "Special card"
+
+[node name="addXl" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
 text = "+"
 
-[node name="remXs" type="Button" parent="SellingSystem/CardSale/Buttons"]
-offset_left = 32.0
-offset_right = 64.0
-offset_bottom = 32.0
+[node name="remXl" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
 text = "-"
 
-[node name="remS" type="Button" parent="SellingSystem/CardSale/Buttons"]
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 64.0
-offset_bottom = 64.0
-text = "-"
-
-[node name="remM" type="Button" parent="SellingSystem/CardSale/Buttons"]
-offset_left = 32.0
-offset_top = 64.0
-offset_right = 64.0
-offset_bottom = 96.0
-text = "-"
-
-[node name="remL" type="Button" parent="SellingSystem/CardSale/Buttons"]
-offset_left = 32.0
-offset_top = 96.0
-offset_right = 64.0
-offset_bottom = 128.0
-text = "-"
-
-[node name="remXl" type="Button" parent="SellingSystem/CardSale/Buttons"]
-offset_left = 32.0
-offset_top = 128.0
-offset_right = 64.0
-offset_bottom = 160.0
-text = "-"
+[node name="Xl" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem"]
+layout_mode = 2
+text = "Quest card"
 
 [node name="Sell" type="Button" parent="SellingSystem/CardSale/Buttons"]
 offset_top = 160.0
@@ -108,38 +110,6 @@ offset_top = 224.0
 offset_right = 64.0
 offset_bottom = 256.0
 text = "Black"
-
-[node name="Labels" type="Node2D" parent="SellingSystem/CardSale"]
-position = Vector2(70, 4)
-
-[node name="Xs" type="Label" parent="SellingSystem/CardSale/Labels"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Lesser card"
-
-[node name="S" type="Label" parent="SellingSystem/CardSale/Labels"]
-offset_top = 32.0
-offset_right = 40.0
-offset_bottom = 55.0
-text = "Card"
-
-[node name="M" type="Label" parent="SellingSystem/CardSale/Labels"]
-offset_top = 64.0
-offset_right = 98.0
-offset_bottom = 87.0
-text = "Greater card"
-
-[node name="L" type="Label" parent="SellingSystem/CardSale/Labels"]
-offset_top = 96.0
-offset_right = 93.0
-offset_bottom = 119.0
-text = "Special card"
-
-[node name="Xl" type="Label" parent="SellingSystem/CardSale/Labels"]
-offset_top = 128.0
-offset_right = 108.0
-offset_bottom = 151.0
-text = "Quest card"
 
 [node name="Bartering" type="Node2D" parent="SellingSystem"]
 
@@ -210,16 +180,16 @@ offset_top = 32.0
 offset_right = 152.0
 offset_bottom = 64.0
 
-[connection signal="pressed" from="SellingSystem/CardSale/Buttons/addXs" to="SellingSystem" method="_on_add_xs_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Buttons/addS" to="SellingSystem" method="_on_add_s_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Buttons/addM" to="SellingSystem" method="_on_add_m_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Buttons/addL" to="SellingSystem" method="_on_add_l_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Buttons/addXl" to="SellingSystem" method="_on_add_xl_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Buttons/remXs" to="SellingSystem" method="_on_rem_xs_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Buttons/remS" to="SellingSystem" method="_on_rem_s_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Buttons/remM" to="SellingSystem" method="_on_rem_m_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Buttons/remL" to="SellingSystem" method="_on_rem_l_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Buttons/remXl" to="SellingSystem" method="_on_rem_xl_pressed"]
+[connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/addXs" to="SellingSystem" method="_on_add_xs_pressed"]
+[connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/remXs" to="SellingSystem" method="_on_rem_xs_pressed"]
+[connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/addS" to="SellingSystem" method="_on_add_s_pressed"]
+[connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/remS" to="SellingSystem" method="_on_rem_s_pressed"]
+[connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/addM" to="SellingSystem" method="_on_add_m_pressed"]
+[connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/remM" to="SellingSystem" method="_on_rem_m_pressed"]
+[connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/addL" to="SellingSystem" method="_on_add_l_pressed"]
+[connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/remL" to="SellingSystem" method="_on_rem_l_pressed"]
+[connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/addXl" to="SellingSystem" method="_on_add_xl_pressed"]
+[connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/remXl" to="SellingSystem" method="_on_rem_xl_pressed"]
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/Sell" to="SellingSystem" method="_on_sell_pressed"]
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/HiLo" to="SellingSystem" method="_on_hi_lo_pressed"]
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/Blackjack" to="SellingSystem" method="_on_blackjack_pressed"]

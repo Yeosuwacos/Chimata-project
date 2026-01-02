@@ -2,11 +2,11 @@ extends Node2D
 
 #Refreshes the card labels
 func _ready():
-	$CardSale/Labels/Xs.text = "Lesser ability cards " + str(Global.sold_xs) + "/" + str(Global.ability_card_xs)
-	$CardSale/Labels/S.text = "Ability cards " + str(Global.sold_s) + "/" + str(Global.ability_card_s)
-	$CardSale/Labels/M.text = "Greater ability cards " + str(Global.sold_m) + "/" + str(Global.ability_card_m)
-	$CardSale/Labels/L.text = "Quest ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
-	$CardSale/Labels/Xl.text = "Special ability cards " + str(Global.sold_xl) + "/" + str(Global.ability_card_xl)
+	$CardSale/Buttons/AddRem/Xs.text = "Lesser ability cards " + str(Global.sold_xs) + "/" + str(Global.ability_card_xs)
+	$CardSale/Buttons/AddRem/S.text = "Ability cards " + str(Global.sold_s) + "/" + str(Global.ability_card_s)
+	$CardSale/Buttons/AddRem/M.text = "Greater ability cards " + str(Global.sold_m) + "/" + str(Global.ability_card_m)
+	$CardSale/Buttons/AddRem/L.text = "Quest ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
+	$CardSale/Buttons/AddRem/Xl.text = "Special ability cards " + str(Global.sold_xl) + "/" + str(Global.ability_card_xl)
 	
 	#Adjusts Sakuya's scale
 	$Bartering/HigherLower/Sakuya.scale = Vector2(400.0/$Bartering/HigherLower/Sakuya.texture.get_width(), \
@@ -18,56 +18,56 @@ func _ready():
 func _on_add_xs_pressed() -> void:
 	if Global.sold_xs < Global.ability_card_xs:
 		Global.sold_xs += 1
-		$CardSale/Labels/Xs.text = "Lesser ability cards " + str(Global.sold_xs) + "/" + str(Global.ability_card_xs)
+		$CardSale/Buttons/AddRem/Xs.text = "Lesser ability cards " + str(Global.sold_xs) + "/" + str(Global.ability_card_xs)
 
 func _on_rem_xs_pressed() -> void:
 	if Global.sold_xs > 0:
 		Global.sold_xs -= 1
-		$CardSale/Labels/Xs.text = "Lesser ability cards " + str(Global.sold_xs) + "/" + str(Global.ability_card_xs)
+		$CardSale/Buttons/AddRem/Xs.text = "Lesser ability cards " + str(Global.sold_xs) + "/" + str(Global.ability_card_xs)
 
 #S
 func _on_add_s_pressed() -> void:
 	if Global.sold_s < Global.ability_card_s:
 		Global.sold_s += 1
-		$CardSale/Labels/S.text = "Ability cards " + str(Global.sold_s) + "/" + str(Global.ability_card_s)
+		$CardSale/Buttons/AddRem/S.text = "Ability cards " + str(Global.sold_s) + "/" + str(Global.ability_card_s)
 
 func _on_rem_s_pressed() -> void:
 	if Global.sold_s > 0:
 		Global.sold_s -= 1
-		$CardSale/Labels/S.text = "Ability cards " + str(Global.sold_s) + "/" + str(Global.ability_card_s)
+		$CardSale/Buttons/AddRem/S.text = "Ability cards " + str(Global.sold_s) + "/" + str(Global.ability_card_s)
 
 #M
 func _on_add_m_pressed() -> void:
 	if Global.sold_m < Global.ability_card_m:
 		Global.sold_m += 1
-		$CardSale/Labels/M.text = "Greater ability cards " + str(Global.sold_m) + "/" + str(Global.ability_card_m)
+		$CardSale/Buttons/AddRem/M.text = "Greater ability cards " + str(Global.sold_m) + "/" + str(Global.ability_card_m)
 
 func _on_rem_m_pressed() -> void:
 	if Global.sold_m > 0:
 		Global.sold_m -= 1
-		$CardSale/Labels/M.text = "Greater ability cards " + str(Global.sold_m) + "/" + str(Global.ability_card_m)
+		$CardSale/Buttons/AddRem/M.text = "Greater ability cards " + str(Global.sold_m) + "/" + str(Global.ability_card_m)
 
 #L
 func _on_add_l_pressed() -> void:
 	if Global.sold_l < Global.ability_card_l:
 		Global.sold_l += 1
-		$CardSale/Labels/L.text = "Quest ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
+		$CardSale/Buttons/AddRem/L.text = "Quest ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
 
 func _on_rem_l_pressed() -> void:
 	if Global.sold_l > 0:
 		Global.sold_l -= 1
-		$CardSale/Labels/L.text = "Quest ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
+		$CardSale/Buttons/AddRem/L.text = "Quest ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
 
 #Xl
 func _on_add_xl_pressed() -> void:
 	if Global.sold_xl < Global.ability_card_xl:
 		Global.sold_xl += 1
-		$CardSale/Labels/Xl.text = "Special ability cards " + str(Global.sold_xl) + "/" + str(Global.ability_card_xl)
+		$CardSale/Buttons/AddRem/Xl.text = "Special ability cards " + str(Global.sold_xl) + "/" + str(Global.ability_card_xl)
 
 func _on_rem_xl_pressed() -> void:
 	if Global.sold_xl > 0:
 		Global.sold_xl -= 1
-		$CardSale/Labels/Xl.text = "Special ability cards " + str(Global.sold_xl) + "/" + str(Global.ability_card_xl)
+		$CardSale/Buttons/AddRem/Xl.text = "Special ability cards " + str(Global.sold_xl) + "/" + str(Global.ability_card_xl)
 
 #Selling the desired cards without bartering
 func _on_sell_pressed() -> void:
@@ -85,6 +85,7 @@ func _on_hi_lo_pressed() -> void:
 	total += (Global.sold_xs * 50 + Global.sold_s * 300 + Global.sold_m * \
 	825 + Global.sold_l * 2150 + Global.sold_xl * 5400)
 	if total > 0:
+		$CardSale.position = Vector2(9000,3000)
 		HigherLower(total)
 
 func HigherLower(wager):
@@ -105,6 +106,7 @@ func _on_blackjack_pressed() -> void:
 	total += (Global.sold_xs * 50 + Global.sold_s * 300 + Global.sold_m * \
 	825 + Global.sold_l * 2150 + Global.sold_xl * 5400)
 	if total > 0:
+		$CardSale.position = Vector2(9000,3000)
 		Blackjack(total)
 		
 func Blackjack(wager):
@@ -146,7 +148,7 @@ func _on_stand_pressed() -> void:
 		$Bartering/Blackjack/PlayerNb.text += " - Win!"
 		Global.wager *= 1.5
 		
-	elif Global.marisaHand < Global.playerHand: 
+	else: 
 		$Bartering/Blackjack/PlayerNb.text += " - Lose!"
 		Global.wager *= 0.5
 	$Bartering/Cashout.position = Vector2(900,268)
@@ -195,11 +197,11 @@ func remove_stock():
 	$Bartering/HigherLower/Card1.text = ""
 	$Bartering/HigherLower/Card2.text = ""
 	
-	$CardSale/Labels/Xs.text = "Lesser ability cards " + str(Global.sold_xs) + "/" + str(Global.ability_card_xs)
-	$CardSale/Labels/S.text = "Ability cards " + str(Global.sold_s) + "/" + str(Global.ability_card_s)
-	$CardSale/Labels/M.text = "Greater ability cards " + str(Global.sold_m) + "/" + str(Global.ability_card_m)
-	$CardSale/Labels/L.text = "Quest ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
-	$CardSale/Labels/Xl.text = "Special ability cards " + str(Global.sold_xl) + "/" + str(Global.ability_card_xl)
+	$CardSale/Buttons/AddRem/Xs.text = "Lesser ability cards " + str(Global.sold_xs) + "/" + str(Global.ability_card_xs)
+	$CardSale/Buttons/AddRem/S.text = "Ability cards " + str(Global.sold_s) + "/" + str(Global.ability_card_s)
+	$CardSale/Buttons/AddRem/M.text = "Greater ability cards " + str(Global.sold_m) + "/" + str(Global.ability_card_m)
+	$CardSale/Buttons/AddRem/L.text = "Quest ability cards " + str(Global.sold_l) + "/" + str(Global.ability_card_l)
+	$CardSale/Buttons/AddRem/Xl.text = "Special ability cards " + str(Global.sold_xl) + "/" + str(Global.ability_card_xl)
 
 #Variables for the higher-lower minigame
 func _on_higher_pressed() -> void:
@@ -230,3 +232,4 @@ func _on_cashout_pressed() -> void:
 	$Bartering/Blackjack/Hit.disabled = false
 	$Bartering/Blackjack/Stand.disabled = false
 	$Bartering/Blackjack/DDown.disabled = false
+	$CardSale.position = Vector2(50,50)
