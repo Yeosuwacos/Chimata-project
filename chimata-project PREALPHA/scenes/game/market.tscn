@@ -180,6 +180,20 @@ offset_top = 32.0
 offset_right = 152.0
 offset_bottom = 64.0
 
+[node name="BlCards" type="Node2D" parent="SellingSystem/Bartering/Blackjack"]
+
+[node name="YourCards" type="HBoxContainer" parent="SellingSystem/Bartering/Blackjack/BlCards"]
+offset_top = 96.0
+offset_right = 40.0
+offset_bottom = 136.0
+scale = Vector2(0.25, 0.25)
+
+[node name="MarisaCards" type="HBoxContainer" parent="SellingSystem/Bartering/Blackjack/BlCards"]
+offset_top = 300.0
+offset_right = 40.0
+offset_bottom = 340.0
+scale = Vector2(0.25, 0.25)
+
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/addXs" to="SellingSystem" method="_on_add_xs_pressed"]
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/remXs" to="SellingSystem" method="_on_rem_xs_pressed"]
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/addS" to="SellingSystem" method="_on_add_s_pressed"]
