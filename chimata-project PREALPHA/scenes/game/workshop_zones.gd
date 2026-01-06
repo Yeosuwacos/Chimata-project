@@ -24,8 +24,10 @@ func _ready():
 	
 	#Setup the available card fabrication options
 	$cardOptions.visible = true
-	
 	update_prices()
+	
+	#Keep the indicator invisible
+	$cardMinigames/Hitzone/Indicator.visible = false
 
 func _physics_process(delta):
 	
@@ -84,6 +86,7 @@ func play(card,rep):
 	mult = 0
 	hits = 0
 	$cardOptions.visible = false
+	$cardMinigames/Hitzone/Indicator.visible = true
 	$cardMinigames/Repeater.wait_time = 1 - 0.1*card
 	$cardMinigames/Repeater.start()
 	for i in range(0,rep):
@@ -112,6 +115,7 @@ func play(card,rep):
 	$cardMinigames/Repeater.stop()
 	update_prices()
 	$cardOptions.visible = true
+	$cardMinigames/Hitzone/Indicator.visible = false
 	
 	#Makes Chimata able to move again and unlocks the camera
 	Global.isMoving = true

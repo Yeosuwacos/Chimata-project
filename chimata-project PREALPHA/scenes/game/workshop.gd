@@ -8,7 +8,7 @@ extends Node2D
 func _ready():
 	var chimata = chimataScene.instantiate()
 	add_child(chimata)
-	chimata.position = Vector2(50,100*Global.amp)
+	chimata.position = Vector2(50,300)
 	
 	#Settings initialization
 	add_child(optionPopup)

@@ -10,7 +10,7 @@ func _ready():
 	#When loaded, place chimata down on x,y
 	var chimata = chimataScene.instantiate()
 	add_child(chimata)
-	chimata.position = Vector2i(Global.res.x/2,100*Global.amp)
+	chimata.position = Vector2i(Global.res.x/2,300)
 	
 	#GUI initialization
 	$SellingSystem/CardSale.position = Vector2i(50,50)
