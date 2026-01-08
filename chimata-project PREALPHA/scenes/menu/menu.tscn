@@ -72,8 +72,18 @@ text = "+"
 layout_mode = 2
 text = "10 cards"
 
+[node name="ResetRem" type="Button" parent="DevMode/Resources"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "x"
+
+[node name="Reset" type="Label" parent="DevMode/Resources"]
+layout_mode = 2
+text = "Reset progress"
+
 [connection signal="pressed" from="DevMode/Access" to="." method="_on_access_pressed"]
 [connection signal="pressed" from="DevMode/Resources/MoreFundsAdd" to="." method="_on_more_funds_add_pressed"]
 [connection signal="pressed" from="DevMode/Resources/LotsMoreFundsAdd" to="." method="_on_lots_more_funds_add_pressed"]
 [connection signal="pressed" from="DevMode/Resources/MoreOresAdd" to="." method="_on_more_ores_add_pressed"]
 [connection signal="pressed" from="DevMode/Resources/MoreCardsAdd" to="." method="_on_more_cards_add_pressed"]
+[connection signal="pressed" from="DevMode/Resources/ResetRem" to="." method="_on_reset_rem_pressed"]

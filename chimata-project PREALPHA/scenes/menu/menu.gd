@@ -30,3 +30,39 @@ func _on_more_cards_add_pressed() -> void:
 	Global.ability_card_m += 10
 	Global.ability_card_l += 10
 	Global.ability_card_xl += 10
+
+#Resetting the game's progress
+func _on_reset_rem_pressed() -> void:
+	Global.dragon_gem_xs = 0
+	Global.dragon_gem_s = 0
+	Global.dragon_gem_m = 0
+	Global.dragon_gem_l = 0
+	Global.dragon_gem_xl = 0
+	
+	Global.ability_card_xs = 0
+	Global.ability_card_s = 0
+	Global.ability_card_m = 0
+	Global.ability_card_l = 0
+	Global.ability_card_xl = 0
+	
+	Global.funds = 0
+	
+	Global.sold_xs = 0
+	Global.sold_s = 0
+	Global.sold_m = 0
+	Global.sold_l = 0
+	Global.sold_xl = 0
+	
+	Global.moves = 20
+
+	Global.bombStr = 2
+	Global.bombQty = 1
+
+	Global.tpStr = 5
+	Global.tpQty = 1
+
+	Global.addStr = 2
+	Global.addQty = 1
+	Global.addActive = false
+
+	Global.idleXs = 0

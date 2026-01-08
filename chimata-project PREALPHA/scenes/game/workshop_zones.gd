@@ -40,8 +40,8 @@ func _ready():
 	#Places down the different workshop elements
 	$shopGUI.position = Vector2(get_viewport_rect().size.x/2 - cardChoiceSize.x/2, \
 	get_viewport_rect().size.y - cardChoiceSize.y)
-	$BG.size = shopSize
-	$BG.position = Vector2(0, get_viewport_rect().size.y - shopSize.y)
+	$shopGUI/BG.size = shopSize
+	$shopGUI/BG.position = Vector2(0 - $shopGUI.position.x, get_viewport_rect().size.y - shopSize.y - $shopGUI.position.y)
 
 func _physics_process(delta):
 	
