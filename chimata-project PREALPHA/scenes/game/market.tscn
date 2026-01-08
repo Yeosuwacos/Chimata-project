@@ -1,13 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://b00kh2h5kbxj1"]
+[gd_scene load_steps=7 format=3 uid="uid://b00kh2h5kbxj1"]
 
 [ext_resource type="Script" uid="uid://brc20ms50tw2o" path="res://scenes/game/market.gd" id="1_hpopc"]
 [ext_resource type="PackedScene" uid="uid://cs0ie4yghnk43" path="res://scenes/menu/gui.tscn" id="2_cn1e3"]
+[ext_resource type="Texture2D" uid="uid://5bdm7lmq4ojq" path="res://assets/tiles/mineBG.png" id="2_j1wap"]
 [ext_resource type="Script" uid="uid://c78aofn4rjquj" path="res://scenes/game/selling_system.gd" id="3_cn1e3"]
 [ext_resource type="Script" uid="uid://52rfga556q4" path="res://scenes/game/market_zones.gd" id="3_s7log"]
 [ext_resource type="Texture2D" uid="uid://b2dg1b6dem85w" path="res://assets/sprites/sakuya.png" id="5_fwmry"]
 
 [node name="Market" type="Node2D"]
 script = ExtResource("1_hpopc")
+
+[node name="LoopBG" type="Parallax2D" parent="."]
+repeat_size = Vector2(128, 128)
+repeat_times = 20
+
+[node name="BG" type="Sprite2D" parent="LoopBG"]
+texture = ExtResource("2_j1wap")
 
 [node name="MarketZones" type="Node2D" parent="."]
 script = ExtResource("3_s7log")
