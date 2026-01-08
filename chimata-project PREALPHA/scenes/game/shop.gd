@@ -1,10 +1,12 @@
-extends GridContainer
+extends Node2D
 
 #Prepares the shop for when it is opened
 func _ready():
-	$MovesText.text = "+10 moves: " + str(floori(Prices.MoreMoves))
-	$BombsText.text = "+1 bomb: " + str(floori(Prices.MoreBombs))
-	$BombPowerText.text = "+Bomb power: " + str(floori(Prices.BombPower))
+	$ShopGrid/MovesText.text = "+10 moves: " + str(floori(Prices.MoreMoves))
+	$ShopGrid/BombsText.text = "+1 bomb: " + str(floori(Prices.MoreBombs))
+	$ShopGrid/BombPowerText.text = "+Bomb power: " + str(floori(Prices.BombPower))
+	$GUI.position.y = $ShopGrid.size.y
+	$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
 
 #Buys more moves
 func _on_moves_pressed() -> void:
@@ -13,7 +15,8 @@ func _on_moves_pressed() -> void:
 		Global.moves += 10
 		Prices.MoreMovesBought += 1
 		Prices.MoreMoves += 10*Prices.MoreMovesBought**1.5
-		$MovesText.text = "+10 moves: " + str(floori(Prices.MoreMoves))
+		$ShopGrid/MovesText.text = "+10 moves: " + str(floori(Prices.MoreMoves))
+		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
 
 #Buys more bombs
 func _on_bombs_pressed() -> void:
@@ -22,7 +25,8 @@ func _on_bombs_pressed() -> void:
 		Global.bombQty += 1
 		Prices.MoreBombsBought += 1
 		Prices.MoreBombs += 100*Prices.MoreBombsBought**1.6
-		$BombsText.text = "+1 bomb: " + str(floori(Prices.MoreBombs))
+		$ShopGrid/BombsText.text = "+1 bomb: " + str(floori(Prices.MoreBombs))
+		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
 
 #Increases bomb power
 func _on_bomb_power_pressed() -> void:
@@ -30,4 +34,5 @@ func _on_bomb_power_pressed() -> void:
 		Global.funds -= Prices.BombPower
 		Global.bombStr += 1
 		Prices.BombPower += 500*Global.bombStr**3
-		$BombPowerText.text = "+Bomb power: " + str(floori(Prices.BombPower))
+		$ShopGrid/BombPowerText.text = "+Bomb power: " + str(floori(Prices.BombPower))
+		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
