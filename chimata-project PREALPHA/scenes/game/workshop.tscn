@@ -10,11 +10,11 @@ size = Vector2(64, 64)
 [node name="Workshop" type="Node2D"]
 script = ExtResource("1_nryu2")
 
-[node name="LoopBG" type="Parallax2D" parent="."]
+[node name="Background" type="Parallax2D" parent="."]
 repeat_size = Vector2(128, 128)
 repeat_times = 20
 
-[node name="BG" type="Sprite2D" parent="LoopBG"]
+[node name="bgDirt" type="Sprite2D" parent="Background"]
 texture = ExtResource("2_xg03h")
 
 [node name="WorkshopZones" type="Node2D" parent="."]

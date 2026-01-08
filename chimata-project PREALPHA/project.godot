@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Idler="*res://scenes/global script/idler.gd"
-Gui="*res://scenes/menu/gui.tscn"
+Gui="*res://scenes/menu/gui.gd"
 Global="*res://scenes/global script/global.tscn"
 Prices="*res://scenes/global script/prices.tscn"
 Dialogue="*res://dialogue.gd"
