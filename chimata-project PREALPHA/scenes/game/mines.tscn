@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bu802wrejoxy7"]
+[gd_scene load_steps=8 format=3 uid="uid://bu802wrejoxy7"]
 
 [ext_resource type="Script" uid="uid://bxanlmg4sgl3u" path="res://scenes/game/mines.gd" id="1_fyqyq"]
+[ext_resource type="PackedScene" uid="uid://cs0ie4yghnk43" path="res://scenes/menu/gui.tscn" id="2_1d28e"]
+[ext_resource type="Texture2D" uid="uid://5bdm7lmq4ojq" path="res://assets/tiles/mineBG.png" id="2_awnir"]
 [ext_resource type="Script" uid="uid://bldynvbs8ownu" path="res://scenes/game/mine_zones.gd" id="3_2au7w"]
 [ext_resource type="Script" uid="uid://dlii2oup33qw1" path="res://scenes/game/shop.gd" id="3_yh3sh"]
 [ext_resource type="Texture2D" uid="uid://ct6tx5asymrmc" path="res://assets/sprites/momoyo.png" id="4_8ojic"]
@@ -8,6 +10,15 @@
 
 [node name="Mines" type="Node2D"]
 script = ExtResource("1_fyqyq")
+
+[node name="GUI" parent="." instance=ExtResource("2_1d28e")]
+
+[node name="Background" type="Parallax2D" parent="."]
+repeat_size = Vector2(128, 128)
+repeat_times = 20
+
+[node name="bgDirt" type="Sprite2D" parent="Background"]
+texture = ExtResource("2_awnir")
 
 [node name="ShopButton" type="Button" parent="."]
 offset_left = 100.0

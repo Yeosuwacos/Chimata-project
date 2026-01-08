@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjsd8jqp4iyqs"]
+[gd_scene load_steps=5 format=3 uid="uid://cjsd8jqp4iyqs"]
 
 [ext_resource type="Script" uid="uid://d3wakf4nkuqrm" path="res://scenes/game/workshop.gd" id="1_nryu2"]
+[ext_resource type="Texture2D" uid="uid://5bdm7lmq4ojq" path="res://assets/tiles/mineBG.png" id="2_xg03h"]
 [ext_resource type="Script" uid="uid://d5ja3ucwhd3t" path="res://scenes/game/workshop_zones.gd" id="3_xg03h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nryu2"]
@@ -8,6 +9,13 @@ size = Vector2(64, 64)
 
 [node name="Workshop" type="Node2D"]
 script = ExtResource("1_nryu2")
+
+[node name="Background" type="Parallax2D" parent="."]
+repeat_size = Vector2(128, 128)
+repeat_times = 20
+
+[node name="bgDirt" type="Sprite2D" parent="Background"]
+texture = ExtResource("2_xg03h")
 
 [node name="WorkshopZones" type="Node2D" parent="."]
 script = ExtResource("3_xg03h")
