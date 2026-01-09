@@ -18,6 +18,7 @@ func _on_moves_pressed() -> void:
 		Prices.MoreMoves += 10*Prices.MoreMovesBought**1.5
 		$ShopGrid/MovesText.text = "+10 moves: " + str(floori(Prices.MoreMoves))
 		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+		
 
 #Buys more bombs
 func _on_bombs_pressed() -> void:

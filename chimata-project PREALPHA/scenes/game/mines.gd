@@ -9,6 +9,10 @@ extends Node2D
 @onready var itemChoiceSize = Vector2(480,360)
 @onready var momoyoSize = Vector2(360,450)
 
+#Momoyo texture
+@onready var momoyo = load("res://assets/sprites/momoyo.png")
+@onready var momoyoHappy = load("res://assets/sprites/momoyoHappy.png")
+
 func _ready():
 	var chimata = chimataScene.instantiate()
 	add_child(chimata)
@@ -41,7 +45,6 @@ func _ready():
 #Opens the mine shop
 func _on_shop_button_pressed() -> void:
 	if Global.mShopOpen == false:
-		#Creates random dialogue
 		$ShopGUI/mDialogue.text = Dialogue.mineShopLines.pick_random()
 		$ShopGUI.visible = true
 		$Shop.visible = true
@@ -55,6 +58,7 @@ func _on_shop_button_pressed() -> void:
 		$Shop.visible = false
 		$ShopGUI.visible = false
 		Global.mShopOpen = false
+	$ShopGUI/Momoyo.texture = momoyo
 		
 #Opens the idle shop
 func _on_idle_shop_button_pressed() -> void:
@@ -73,6 +77,7 @@ func _on_idle_shop_button_pressed() -> void:
 		$ShopGUI.visible = false
 		$IdleShop.visible = false
 		Global.iShopOpen = false
+	$ShopGUI/Momoyo.texture = momoyo
 
 #Settings menu
 func _input(event):
@@ -85,3 +90,28 @@ func _input(event):
 			elif Global.menuOpen == true:
 				Global.menuOpen = false
 				optionPopup.visible = false
+
+#Momoyo expressions
+func _on_moves_pressed() -> void:
+	if Global.funds >= Prices.MoreMoves:
+		$ShopGUI/Momoyo.texture = momoyoHappy
+
+func _on_bombs_pressed() -> void:
+	if Global.funds >= Prices.MoreBombs:
+		$ShopGUI/Momoyo.texture = momoyoHappy
+
+func _on_bomb_power_pressed() -> void:
+	if Global.funds >= Prices.BombPower:
+		$ShopGUI/Momoyo.texture = momoyoHappy
+
+func _on_t_ps_pressed() -> void:
+	if Global.funds >= Prices.MoreTPs:
+		$ShopGUI/Momoyo.texture = momoyoHappy
+
+func _on_idler_xs_pressed() -> void:
+	if Global.funds >= Prices.idleXs:
+		$ShopGUI/Momoyo.texture = momoyoHappy
+
+func _on_idler_s_pressed() -> void:
+	if Global.funds >= Prices.idleS:
+		$ShopGUI/Momoyo.texture = momoyoHappy
