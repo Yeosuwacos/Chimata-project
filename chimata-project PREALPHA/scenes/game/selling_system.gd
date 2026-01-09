@@ -4,6 +4,7 @@ extends Node2D
 @onready var minigameSize = Vector2(1280,450)
 @onready var gameAreaSize = Vector2(480,360)
 @onready var characterSize = Vector2(360,450)
+@onready var chimataSize = Vector2(432,540)
 @onready var viewX = get_viewport_rect().size.x
 @onready var viewY = get_viewport_rect().size.y
 @onready var currentHover = ""
@@ -19,7 +20,10 @@ func _ready():
 	#Sets the scale for characters
 
 	$CardSale/Characters/Sakuya.scale = characterSize/$CardSale/Characters/Sakuya.texture.get_size()
-	$CardSale/Characters/Sakuya.position = Vector2(characterSize.x/2, get_viewport_rect().size.y - characterSize.y/2)
+	$CardSale/Characters/Sakuya.position = Vector2(characterSize.x/2, viewY - characterSize.y/2)
+	
+	$CardSale/Characters/Chimata.scale = characterSize/$CardSale/Characters/Chimata.texture.get_size()
+	$CardSale/Characters/Chimata.position = Vector2(viewX - chimataSize.x/2, viewY - chimataSize.y/2)
 	
 	#Creates the layout for the interface
 	
@@ -37,6 +41,7 @@ func _ready():
 	
 	#Hides the characters
 	$CardSale/Characters/Sakuya.visible = false
+	$CardSale/Characters/Chimata.visible = false
 	
 	#Places the character calling buttons in good proportions
 	
@@ -62,6 +67,7 @@ func _input(event):
 					$BG.visible = true
 
 					$CardSale/Characters/Sakuya.visible = false
+					$CardSale/Characters/Chimata.visible = true
 					
 					$CardSale/Characters/dialogue.visible = true
 					
@@ -73,6 +79,7 @@ func _input(event):
 					$BG.visible = true
 					
 					$CardSale/Characters/Sakuya.visible = true
+					$CardSale/Characters/Chimata.visible = true
 					
 					$CardSale/Characters/dialogue.visible = true
 					$CardSale/Characters/dialogue.text = Dialogue.HiLoLines.pick_random()
@@ -85,6 +92,7 @@ func _input(event):
 					$BG.visible = true
 					
 					$CardSale/Characters/Sakuya.visible = false
+					$CardSale/Characters/Chimata.visible = true
 					
 					$CardSale/Characters/dialogue.visible = true
 					

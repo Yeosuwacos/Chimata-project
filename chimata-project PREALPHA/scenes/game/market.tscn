@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b00kh2h5kbxj1"]
+[gd_scene load_steps=9 format=3 uid="uid://b00kh2h5kbxj1"]
 
 [ext_resource type="Script" uid="uid://brc20ms50tw2o" path="res://scenes/game/market.gd" id="1_hpopc"]
 [ext_resource type="PackedScene" uid="uid://cs0ie4yghnk43" path="res://scenes/menu/gui.tscn" id="2_cn1e3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c78aofn4rjquj" path="res://scenes/game/selling_system.gd" id="3_cn1e3"]
 [ext_resource type="Script" uid="uid://52rfga556q4" path="res://scenes/game/market_zones.gd" id="3_s7log"]
 [ext_resource type="Texture2D" uid="uid://b2dg1b6dem85w" path="res://assets/sprites/sakuya.png" id="5_fwmry"]
+[ext_resource type="Texture2D" uid="uid://b8uynqbvyo18s" path="res://assets/sprites/chimata.png" id="7_e0t0h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1wap"]
 size = Vector2(32, 32)
@@ -190,6 +191,9 @@ color = Color(0.30980393, 1, 1, 1)
 [node name="Sakuya" type="Sprite2D" parent="SellingSystem/CardSale/Characters"]
 position = Vector2(8344, 2744)
 texture = ExtResource("5_fwmry")
+
+[node name="Chimata" type="Sprite2D" parent="SellingSystem/CardSale/Characters"]
+texture = ExtResource("7_e0t0h")
 
 [node name="dialogue" type="Label" parent="SellingSystem/CardSale/Characters"]
 offset_right = 40.0

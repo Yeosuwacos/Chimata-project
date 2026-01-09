@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d04y0grsjftof"
-path="res://.godot/imported/ChimataV2.png-f4e126e82754e2f7352fb244b9068159.ctex"
+uid="uid://b8uynqbvyo18s"
+path="res://.godot/imported/chimata.png-2713ab56761c49b37427b33ea94ae77d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ChimataV2.png"
-dest_files=["res://.godot/imported/ChimataV2.png-f4e126e82754e2f7352fb244b9068159.ctex"]
+source_file="res://assets/sprites/chimata.png"
+dest_files=["res://.godot/imported/chimata.png-2713ab56761c49b37427b33ea94ae77d.ctex"]
 
 [params]
 

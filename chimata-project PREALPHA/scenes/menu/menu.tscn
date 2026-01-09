@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dtg08dba76ja5" path="res://scenes/menu/menu.gd" id="1_klgdb"]
 
 [node name="Menu" type="Control"]
+z_index = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

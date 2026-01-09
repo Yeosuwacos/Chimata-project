@@ -7,7 +7,7 @@ extends Node2D
 #Interface variables
 @onready var shopSize = Vector2(1280,450)
 @onready var itemChoiceSize = Vector2(480,360)
-@onready var momoyoSize = Vector2(360,450)
+@onready var characterSize = Vector2(360,450)
 
 #Momoyo texture
 @onready var momoyo = load("res://assets/sprites/momoyo.png")
@@ -28,11 +28,14 @@ func _ready():
 	get_viewport_rect().size.y - itemChoiceSize.y)
 	$IdleShop.position = Vector2(get_viewport_rect().size.x/2 - itemChoiceSize.x/2, \
 	get_viewport_rect().size.y - itemChoiceSize.y)
-	$ShopGUI/mDialogue.position = Vector2(momoyoSize.x, get_viewport_rect().size.y - shopSize.y) 
+	$ShopGUI/mDialogue.position = Vector2(characterSize.x, get_viewport_rect().size.y - shopSize.y) 
 	
 	#Momoyo initialization
-	$ShopGUI/Momoyo.scale = momoyoSize/$ShopGUI/Momoyo.texture.get_size()
-	$ShopGUI/Momoyo.position = Vector2(momoyoSize.x/2, get_viewport_rect().size.y - momoyoSize.y/2)
+	$ShopGUI/Momoyo.scale = characterSize/$ShopGUI/Momoyo.texture.get_size()
+	$ShopGUI/Momoyo.position = Vector2(characterSize.x/2, get_viewport_rect().size.y - characterSize.y/2)
+	
+	$ShopGUI/Chimata.scale = characterSize/$ShopGUI/Chimata.texture.get_size()
+	$ShopGUI/Chimata.position = Vector2(get_viewport_rect().size.x - characterSize.x/2, get_viewport_rect().size.y - characterSize.y/2)
 	
 	#Hides the shop until the button is pressed
 	Global.mShopOpen = false
