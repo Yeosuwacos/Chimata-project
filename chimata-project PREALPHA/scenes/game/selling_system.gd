@@ -6,6 +6,7 @@ extends Node2D
 @onready var characterSize = Vector2(360,450)
 @onready var viewX = get_viewport_rect().size.x
 @onready var viewY = get_viewport_rect().size.y
+@onready var currentHover = ""
 
 #Refreshes the card labels
 func _ready():
@@ -41,50 +42,86 @@ func _ready():
 	
 	$CardSale/Characters/CallChara.add_theme_constant_override("separation", viewX/5)
 	$CardSale/Characters/CallChara.position = Vector2(viewX/2 - $CardSale/Characters/CallChara.size.x/2, \
-	viewY - minigameSize.y - $CardSale/Characters/CallChara.size.y - 50)
+	viewY - minigameSize.y - $CardSale/Characters/CallChara.size.y - 128)
 	$CardSale/Buttons.position = Vector2(viewX/2 - gameAreaSize.x/2, viewY - gameAreaSize.y)
 	$CardSale/Buttons/Sell.visible = false
 	$CardSale/Buttons/HiLo.visible = false
 	$CardSale/Buttons/Blackjack.visible = false
 
 #Picks the right character and begins a sale
+func _input(event):
+	if event is InputEventKey and event.pressed and not event.echo:
+		if Input.is_action_pressed("confirm"):
+			match currentHover:
+				"": pass
+				"reimu":
+					$CardSale/Buttons.visible = true
+					$CardSale/Buttons/Sell.visible = true
+					$CardSale/Buttons/HiLo.visible = false
+					$CardSale/Buttons/Blackjack.visible = false
+					$BG.visible = true
 
-func _on_reimu_sale_pressed() -> void:
-	$CardSale/Buttons.visible = true
-	$CardSale/Buttons/Sell.visible = true
-	$CardSale/Buttons/HiLo.visible = false
-	$CardSale/Buttons/Blackjack.visible = false
-	$BG.visible = true
+					$CardSale/Characters/Sakuya.visible = false
+					
+					$CardSale/Characters/dialogue.visible = true
+					
+				"sakuya":
+					$CardSale/Buttons.visible = true
+					$CardSale/Buttons/HiLo.visible = true
+					$CardSale/Buttons/Sell.visible = false
+					$CardSale/Buttons/Blackjack.visible = false
+					$BG.visible = true
+					
+					$CardSale/Characters/Sakuya.visible = true
+					
+					$CardSale/Characters/dialogue.visible = true
+					$CardSale/Characters/dialogue.text = Dialogue.HiLoLines.pick_random()
+					
+				"marisa":
+					$CardSale/Buttons.visible = true
+					$CardSale/Buttons/Blackjack.visible = true
+					$CardSale/Buttons/Sell.visible = false
+					$CardSale/Buttons/HiLo.visible = false
+					$BG.visible = true
+					
+					$CardSale/Characters/Sakuya.visible = false
+					
+					$CardSale/Characters/dialogue.visible = true
+					
+				"sanae":
+					pass
 
-	$CardSale/Characters/Sakuya.visible = false
-	
-	$CardSale/Characters/dialogue.visible = true
+#Detection functions for character sales
 
-func _on_sakuya_hi_lo_pressed() -> void:
-	$CardSale/Buttons.visible = true
-	$CardSale/Buttons/HiLo.visible = true
-	$CardSale/Buttons/Sell.visible = false
-	$CardSale/Buttons/Blackjack.visible = false
-	$BG.visible = true
-	
-	$CardSale/Characters/Sakuya.visible = true
-	
-	$CardSale/Characters/dialogue.visible = true
-	$CardSale/Characters/dialogue.text = Dialogue.HiLoLines.pick_random()
+func _on_reimu_sale_body_entered(_body) -> void: 
+	currentHover = "reimu"
+	$CardSale/Characters/CallChara/Reimu/ReimuSale/pressE.visible = true
+func _on_reimu_sale_body_exited(_body) -> void: 
+	currentHover = ""
+	$CardSale/Characters/CallChara/Reimu/ReimuSale/pressE.visible = false
 
-func _on_marisa_blackjack_pressed() -> void:
-	$CardSale/Buttons.visible = true
-	$CardSale/Buttons/Blackjack.visible = true
-	$CardSale/Buttons/Sell.visible = false
-	$CardSale/Buttons/HiLo.visible = false
-	$BG.visible = true
-	
-	$CardSale/Characters/Sakuya.visible = false
-	
-	$CardSale/Characters/dialogue.visible = true
+func _on_sakuya_hi_lo_body_entered(_body) -> void: 
+	currentHover = "sakuya"
+	$CardSale/Characters/CallChara/Sakuya/SakuyaHiLo/pressE.visible = true
+func _on_sakuya_hi_lo_body_exited(_body) -> void: 
+	currentHover = ""
+	$CardSale/Characters/CallChara/Sakuya/SakuyaHiLo/pressE.visible = false
 
-func _on_sanae_roulette_pressed() -> void:
-	pass # Replace with function body.
+func _on_marisa_blackjack_body_entered(_body) -> void:
+	currentHover = "marisa"
+	$CardSale/Characters/CallChara/Marisa/MarisaBlackjack/pressE.visible = true
+func _on_marisa_blackjack_body_exited(_body) -> void:
+	currentHover = ""
+	$CardSale/Characters/CallChara/Marisa/MarisaBlackjack/pressE.visible = false
+	
+func _on_sanae_card_flip_body_entered(_body) -> void:
+	currentHover = "sanae"
+	$CardSale/Characters/CallChara/Sanae/SanaeCardFlip/pressE.visible = true
+func _on_sanae_card_flip_body_exited(_body) -> void:
+	currentHover = ""
+	$CardSale/Characters/CallChara/Sanae/SanaeCardFlip/pressE.visible = false
+
+
 
 #Adding or removing cards for sale
 

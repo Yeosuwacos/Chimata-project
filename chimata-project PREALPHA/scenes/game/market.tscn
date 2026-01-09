@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b00kh2h5kbxj1"]
+[gd_scene load_steps=8 format=3 uid="uid://b00kh2h5kbxj1"]
 
 [ext_resource type="Script" uid="uid://brc20ms50tw2o" path="res://scenes/game/market.gd" id="1_hpopc"]
 [ext_resource type="PackedScene" uid="uid://cs0ie4yghnk43" path="res://scenes/menu/gui.tscn" id="2_cn1e3"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://c78aofn4rjquj" path="res://scenes/game/selling_system.gd" id="3_cn1e3"]
 [ext_resource type="Script" uid="uid://52rfga556q4" path="res://scenes/game/market_zones.gd" id="3_s7log"]
 [ext_resource type="Texture2D" uid="uid://b2dg1b6dem85w" path="res://assets/sprites/sakuya.png" id="5_fwmry"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1wap"]
+size = Vector2(32, 32)
 
 [node name="Market" type="Node2D"]
 script = ExtResource("1_hpopc")
@@ -120,21 +123,69 @@ scale = Vector2(0.15, 0.15)
 
 [node name="CallChara" type="HBoxContainer" parent="SellingSystem/CardSale/Characters"]
 
-[node name="ReimuSale" type="Button" parent="SellingSystem/CardSale/Characters/CallChara"]
-custom_minimum_size = Vector2(32, 32)
+[node name="Reimu" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara"]
 layout_mode = 2
 
-[node name="SakuyaHiLo" type="Button" parent="SellingSystem/CardSale/Characters/CallChara"]
+[node name="ReimuSale" type="Area2D" parent="SellingSystem/CardSale/Characters/CallChara/Reimu"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SellingSystem/CardSale/Characters/CallChara/Reimu/ReimuSale"]
+shape = SubResource("RectangleShape2D_j1wap")
+
+[node name="pressE" type="ColorRect" parent="SellingSystem/CardSale/Characters/CallChara/Reimu/ReimuSale"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
+offset_left = 64.0
+offset_top = -32.0
+offset_right = 96.0
+color = Color(0.30980393, 1, 1, 1)
+
+[node name="Sakuya" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara"]
 layout_mode = 2
 
-[node name="MarisaBlackjack" type="Button" parent="SellingSystem/CardSale/Characters/CallChara"]
+[node name="SakuyaHiLo" type="Area2D" parent="SellingSystem/CardSale/Characters/CallChara/Sakuya"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SellingSystem/CardSale/Characters/CallChara/Sakuya/SakuyaHiLo"]
+shape = SubResource("RectangleShape2D_j1wap")
+
+[node name="pressE" type="ColorRect" parent="SellingSystem/CardSale/Characters/CallChara/Sakuya/SakuyaHiLo"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
+offset_left = 64.0
+offset_top = -32.0
+offset_right = 96.0
+color = Color(0.30980393, 1, 1, 1)
+
+[node name="Marisa" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara"]
 layout_mode = 2
 
-[node name="SanaeRoulette" type="Button" parent="SellingSystem/CardSale/Characters/CallChara"]
+[node name="MarisaBlackjack" type="Area2D" parent="SellingSystem/CardSale/Characters/CallChara/Marisa"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SellingSystem/CardSale/Characters/CallChara/Marisa/MarisaBlackjack"]
+shape = SubResource("RectangleShape2D_j1wap")
+
+[node name="pressE" type="ColorRect" parent="SellingSystem/CardSale/Characters/CallChara/Marisa/MarisaBlackjack"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
+offset_left = 64.0
+offset_top = -32.0
+offset_right = 96.0
+color = Color(0.30980393, 1, 1, 1)
+
+[node name="Sanae" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara"]
 layout_mode = 2
+
+[node name="SanaeCardFlip" type="Area2D" parent="SellingSystem/CardSale/Characters/CallChara/Sanae"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SellingSystem/CardSale/Characters/CallChara/Sanae/SanaeCardFlip"]
+shape = SubResource("RectangleShape2D_j1wap")
+
+[node name="pressE" type="ColorRect" parent="SellingSystem/CardSale/Characters/CallChara/Sanae/SanaeCardFlip"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+offset_left = 64.0
+offset_top = -32.0
+offset_right = 96.0
+color = Color(0.30980393, 1, 1, 1)
 
 [node name="Sakuya" type="Sprite2D" parent="SellingSystem/CardSale/Characters"]
 position = Vector2(8344, 2744)
@@ -235,10 +286,14 @@ text = "Black"
 [connection signal="pressed" from="SellingSystem/minigameGUI/Bartering/Blackjack/Hit" to="SellingSystem" method="_on_hit_pressed"]
 [connection signal="pressed" from="SellingSystem/minigameGUI/Bartering/Blackjack/DDown" to="SellingSystem" method="_on_d_down_pressed"]
 [connection signal="pressed" from="SellingSystem/minigameGUI/Bartering/Blackjack/Stand" to="SellingSystem" method="_on_stand_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Characters/CallChara/ReimuSale" to="SellingSystem" method="_on_reimu_sale_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Characters/CallChara/SakuyaHiLo" to="SellingSystem" method="_on_sakuya_hi_lo_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Characters/CallChara/MarisaBlackjack" to="SellingSystem" method="_on_marisa_blackjack_pressed"]
-[connection signal="pressed" from="SellingSystem/CardSale/Characters/CallChara/SanaeRoulette" to="SellingSystem" method="_on_sanae_roulette_pressed"]
+[connection signal="body_entered" from="SellingSystem/CardSale/Characters/CallChara/Reimu/ReimuSale" to="SellingSystem" method="_on_reimu_sale_body_entered"]
+[connection signal="body_exited" from="SellingSystem/CardSale/Characters/CallChara/Reimu/ReimuSale" to="SellingSystem" method="_on_reimu_sale_body_exited"]
+[connection signal="body_entered" from="SellingSystem/CardSale/Characters/CallChara/Sakuya/SakuyaHiLo" to="SellingSystem" method="_on_sakuya_hi_lo_body_entered"]
+[connection signal="body_exited" from="SellingSystem/CardSale/Characters/CallChara/Sakuya/SakuyaHiLo" to="SellingSystem" method="_on_sakuya_hi_lo_body_exited"]
+[connection signal="body_entered" from="SellingSystem/CardSale/Characters/CallChara/Marisa/MarisaBlackjack" to="SellingSystem" method="_on_marisa_blackjack_body_entered"]
+[connection signal="body_exited" from="SellingSystem/CardSale/Characters/CallChara/Marisa/MarisaBlackjack" to="SellingSystem" method="_on_marisa_blackjack_body_exited"]
+[connection signal="body_entered" from="SellingSystem/CardSale/Characters/CallChara/Sanae/SanaeCardFlip" to="SellingSystem" method="_on_sanae_card_flip_body_entered"]
+[connection signal="body_exited" from="SellingSystem/CardSale/Characters/CallChara/Sanae/SanaeCardFlip" to="SellingSystem" method="_on_sanae_card_flip_body_exited"]
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/addXs" to="SellingSystem" method="_on_add_xs_pressed"]
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/remXs" to="SellingSystem" method="_on_rem_xs_pressed"]
 [connection signal="pressed" from="SellingSystem/CardSale/Buttons/AddRem/addS" to="SellingSystem" method="_on_add_s_pressed"]
