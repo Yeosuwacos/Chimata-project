@@ -91,6 +91,26 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = "Reload "
 
+[node name="Credits" type="Node2D" parent="."]
+position = Vector2(300, 0)
+
+[node name="Placeholder" type="Label" parent="Credits"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "__Credits__ 
+*CHANGE LATER & ASK FOR WHAT NAMES/SOCIALS TO USE*
+
+Code:
+Yeosuwa
+
+Art: 
+Myst
+Nana
+Interweb
+
+OST: 
+Lamp"
+
 [connection signal="pressed" from="DevMode/Access" to="." method="_on_access_pressed"]
 [connection signal="pressed" from="DevMode/Resources/MoreFundsAdd" to="." method="_on_more_funds_add_pressed"]
 [connection signal="pressed" from="DevMode/Resources/LotsMoreFundsAdd" to="." method="_on_lots_more_funds_add_pressed"]

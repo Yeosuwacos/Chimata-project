@@ -6,8 +6,7 @@ func _ready():
 	$DevMode/Resources.visible = false
 	if Global.passwordEntered == true:
 		$DevMode/Resources.visible = true
-	$DevMode/BG.size = Vector2($DevMode/Resources.size.x, $DevMode/Resources.size.y \
-	+ $DevMode/Password.size.y + $DevMode/Title.size.y)
+	$DevMode/BG.size = Vector2(get_viewport_rect().size)
 
 func _on_access_pressed() -> void:
 	if $DevMode/Password.text == "LuvChimata<3":
