@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu802wrejoxy7"]
+[gd_scene load_steps=12 format=3 uid="uid://bu802wrejoxy7"]
 
 [ext_resource type="Script" uid="uid://bxanlmg4sgl3u" path="res://scenes/game/mines.gd" id="1_fyqyq"]
 [ext_resource type="PackedScene" uid="uid://cs0ie4yghnk43" path="res://scenes/menu/gui.tscn" id="2_1d28e"]
 [ext_resource type="Texture2D" uid="uid://5bdm7lmq4ojq" path="res://assets/tiles/mineBG.png" id="2_awnir"]
+[ext_resource type="Texture2D" uid="uid://djli38mvmfwab" path="res://assets/buttons/confirm.png" id="2_cuk8l"]
 [ext_resource type="Script" uid="uid://bldynvbs8ownu" path="res://scenes/game/mine_zones.gd" id="3_2au7w"]
 [ext_resource type="Script" uid="uid://dlii2oup33qw1" path="res://scenes/game/shop.gd" id="3_yh3sh"]
 [ext_resource type="Texture2D" uid="uid://qyuk6lkeyewq" path="res://assets/sprites/momoyo.png" id="4_8ojic"]
@@ -10,29 +11,53 @@
 [ext_resource type="Texture2D" uid="uid://bdyer130vmqqx" path="res://assets/UI/Frame.png" id="6_bmy1k"]
 [ext_resource type="Texture2D" uid="uid://b8uynqbvyo18s" path="res://assets/sprites/chimata.png" id="6_lrki8"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuk8l"]
+size = Vector2(32, 300)
+
 [node name="Mines" type="Node2D"]
 script = ExtResource("1_fyqyq")
 
 [node name="Buttons" type="HBoxContainer" parent="."]
 z_index = 1
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 106.0
+offset_bottom = 31.0
 
-[node name="StartMining" type="Button" parent="Buttons"]
-custom_minimum_size = Vector2(32, 32)
+[node name="Mining" type="GridContainer" parent="Buttons"]
 layout_mode = 2
-text = "Start!
-"
 
-[node name="ShopButton" type="Button" parent="Buttons"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-text = "Shop"
+[node name="StartMining" type="Area2D" parent="Buttons/Mining"]
 
-[node name="IdleShopButton" type="Button" parent="Buttons"]
-custom_minimum_size = Vector2(32, 32)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Mining/StartMining"]
+shape = SubResource("RectangleShape2D_cuk8l")
+
+[node name="pressE" type="Sprite2D" parent="Buttons/Mining/StartMining"]
+visible = false
+texture = ExtResource("2_cuk8l")
+
+[node name="Shop" type="GridContainer" parent="Buttons"]
 layout_mode = 2
-text = "Idling"
+
+[node name="ShopButton" type="Area2D" parent="Buttons/Shop"]
+position = Vector2(-4, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/Shop/ShopButton"]
+shape = SubResource("RectangleShape2D_cuk8l")
+
+[node name="pressE" type="Sprite2D" parent="Buttons/Shop/ShopButton"]
+visible = false
+texture = ExtResource("2_cuk8l")
+
+[node name="IdleShop" type="GridContainer" parent="Buttons"]
+layout_mode = 2
+
+[node name="IdleShopButton" type="Area2D" parent="Buttons/IdleShop"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/IdleShop/IdleShopButton"]
+shape = SubResource("RectangleShape2D_cuk8l")
+
+[node name="pressE" type="Sprite2D" parent="Buttons/IdleShop/IdleShopButton"]
+visible = false
+texture = ExtResource("2_cuk8l")
 
 [node name="GUI" parent="." instance=ExtResource("2_1d28e")]
 
@@ -161,9 +186,12 @@ layout_mode = 2
 [node name="idlerSText" type="Label" parent="IdleShop/IdleShopGrid"]
 layout_mode = 2
 
-[connection signal="pressed" from="Buttons/StartMining" to="MineZones" method="_on_start_mining_pressed"]
-[connection signal="pressed" from="Buttons/ShopButton" to="." method="_on_shop_button_pressed"]
-[connection signal="pressed" from="Buttons/IdleShopButton" to="." method="_on_idle_shop_button_pressed"]
+[connection signal="body_entered" from="Buttons/Mining/StartMining" to="." method="_on_start_mining_body_entered"]
+[connection signal="body_exited" from="Buttons/Mining/StartMining" to="." method="_on_start_mining_body_exited"]
+[connection signal="body_entered" from="Buttons/Shop/ShopButton" to="." method="_on_shop_button_body_entered"]
+[connection signal="body_exited" from="Buttons/Shop/ShopButton" to="." method="_on_shop_button_body_exited"]
+[connection signal="body_entered" from="Buttons/IdleShop/IdleShopButton" to="." method="_on_idle_shop_button_body_entered"]
+[connection signal="body_exited" from="Buttons/IdleShop/IdleShopButton" to="." method="_on_idle_shop_button_body_exited"]
 [connection signal="pressed" from="Shop/ShopGrid/Moves" to="." method="_on_moves_pressed"]
 [connection signal="pressed" from="Shop/ShopGrid/Moves" to="Shop" method="_on_moves_pressed"]
 [connection signal="pressed" from="Shop/ShopGrid/Bombs" to="." method="_on_bombs_pressed"]

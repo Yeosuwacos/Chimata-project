@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b8uynqbvyo18s" path="res://assets/sprites/chimata.png" id="7_e0t0h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1wap"]
-size = Vector2(32, 32)
+size = Vector2(32, 300)
 
 [node name="Market" type="Node2D"]
 script = ExtResource("1_hpopc")
@@ -124,6 +124,7 @@ scale = Vector2(0.15, 0.15)
 [node name="Characters" type="Node2D" parent="SellingSystem/CardSale"]
 
 [node name="CallChara" type="HBoxContainer" parent="SellingSystem/CardSale/Characters"]
+offset_right = 12.0
 
 [node name="Reimu" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara"]
 layout_mode = 2
@@ -135,7 +136,6 @@ shape = SubResource("RectangleShape2D_j1wap")
 
 [node name="pressE" type="Sprite2D" parent="SellingSystem/CardSale/Characters/CallChara/Reimu/ReimuSale"]
 visible = false
-position = Vector2(0, 64)
 texture = ExtResource("6_a3nyx")
 
 [node name="Sakuya" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara"]
@@ -148,7 +148,6 @@ shape = SubResource("RectangleShape2D_j1wap")
 
 [node name="pressE" type="Sprite2D" parent="SellingSystem/CardSale/Characters/CallChara/Sakuya/SakuyaHiLo"]
 visible = false
-position = Vector2(0, 64)
 texture = ExtResource("6_a3nyx")
 
 [node name="Marisa" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara"]
@@ -161,7 +160,6 @@ shape = SubResource("RectangleShape2D_j1wap")
 
 [node name="pressE" type="Sprite2D" parent="SellingSystem/CardSale/Characters/CallChara/Marisa/MarisaBlackjack"]
 visible = false
-position = Vector2(0, 64)
 texture = ExtResource("6_a3nyx")
 
 [node name="Sanae" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara"]
@@ -174,7 +172,6 @@ shape = SubResource("RectangleShape2D_j1wap")
 
 [node name="pressE" type="Sprite2D" parent="SellingSystem/CardSale/Characters/CallChara/Sanae/SanaeCardFlip"]
 visible = false
-position = Vector2(0, 64)
 texture = ExtResource("6_a3nyx")
 
 [node name="Sakuya" type="Sprite2D" parent="SellingSystem/CardSale/Characters"]

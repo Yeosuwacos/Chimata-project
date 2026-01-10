@@ -14,7 +14,3 @@ func _physics_process(delta):
 	if $gotoMarket.is_colliding():
 		get_parent().queue_free()
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/game/market.tscn")
-
-
-func _on_start_mining_pressed():
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/game/mine_minigame.tscn")

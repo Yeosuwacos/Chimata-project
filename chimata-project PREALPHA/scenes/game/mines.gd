@@ -59,45 +59,30 @@ func _ready():
 	$Shop.visible = false
 	$IdleShop.visible = false
 
-#Opens the mine shop
-func _on_shop_button_pressed() -> void:
-	if Global.mShopOpen == false:
-		$ShopGUI/mDialogue.text = Dialogue.mineShopLines.pick_random()
-		$ShopGUI.visible = true
-		$Shop.visible = true
-		Global.mShopOpen = true
-		$Shop/GUI/Funds.text = "Funds: " + str(floori(Global.funds))
-		
-		$IdleShop.visible = false
-		Global.iShopOpen = false
-		
-	elif Global.mShopOpen == true:
-		$Shop.visible = false
-		$ShopGUI.visible = false
-		Global.mShopOpen = false
-	$ShopGUI/Characters/Momoyo.texture = momoyo
-		
-#Opens the idle shop
-func _on_idle_shop_button_pressed() -> void:
-	if Global.iShopOpen == false:
-		$ShopGUI/mDialogue.text = Dialogue.idleShopLines.pick_random()
-		$ShopGUI.visible = true
-		$IdleShop.visible = true
-		Global.iShopOpen = true
-		$IdleShop/GUI/Funds.text = "Funds: " + str(floori(Global.funds))
-		
-		$Shop.visible = false
-		Global.mShopOpen = false
-		
-		
-	elif Global.iShopOpen == true:
-		$ShopGUI.visible = false
-		$IdleShop.visible = false
-		Global.iShopOpen = false
-	$ShopGUI/Characters/Momoyo.texture = momoyo
+#Confirmation detection
+func _on_start_mining_body_entered(_body) -> void:
+	currentHover = "mining"
+	$Buttons/Mining/StartMining/pressE.visible = true
+func _on_start_mining_body_exited(_body) -> void:
+	currentHover = ""
+	$Buttons/Mining/StartMining/pressE.visible = false
+	
+func _on_shop_button_body_entered(_body) -> void:
+	currentHover = "shop"
+	$Buttons/Shop/ShopButton/pressE.visible = true
+func _on_shop_button_body_exited(_body) -> void:
+	currentHover = ""
+	$Buttons/Shop/ShopButton/pressE.visible = false
+	
+func _on_idle_shop_button_body_entered(_body) -> void:
+	currentHover = "idleShop"
+	$Buttons/IdleShop/IdleShopButton/pressE.visible = true
+func _on_idle_shop_button_body_exited(_body) -> void:
+	currentHover = "idleShop"
+	$Buttons/IdleShop/IdleShopButton/pressE.visible = false
 
-#Settings menu
 func _input(event):
+	#Settings menu
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_ESCAPE:
 			if Global.menuOpen == false:
@@ -107,10 +92,48 @@ func _input(event):
 			elif Global.menuOpen == true:
 				Global.menuOpen = false
 				optionPopup.visible = false
-				
+		
+		#Button selection
 		if Input.is_action_pressed("confirm"):
 			match currentHover:
 				"": pass
+				
+				"mining": get_tree().call_deferred("change_scene_to_file", "res://scenes/game/mine_minigame.tscn")
+				
+				"shop":
+					if Global.mShopOpen == false:
+						$ShopGUI/mDialogue.text = Dialogue.mineShopLines.pick_random()
+						$ShopGUI.visible = true
+						$Shop.visible = true
+						Global.mShopOpen = true
+						$Shop/GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+						
+						$IdleShop.visible = false
+						Global.iShopOpen = false
+						
+					elif Global.mShopOpen == true:
+						$Shop.visible = false
+						$ShopGUI.visible = false
+						Global.mShopOpen = false
+					$ShopGUI/Characters/Momoyo.texture = momoyo
+					
+				"idleShop":
+						if Global.iShopOpen == false:
+							$ShopGUI/mDialogue.text = Dialogue.idleShopLines.pick_random()
+							$ShopGUI.visible = true
+							$IdleShop.visible = true
+							Global.iShopOpen = true
+							$IdleShop/GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+							
+							$Shop.visible = false
+							Global.mShopOpen = false
+							
+							
+						elif Global.iShopOpen == true:
+							$ShopGUI.visible = false
+							$IdleShop.visible = false
+							Global.iShopOpen = false
+						$ShopGUI/Characters/Momoyo.texture = momoyo
 
 #Momoyo expressions
 func _on_moves_pressed() -> void:
