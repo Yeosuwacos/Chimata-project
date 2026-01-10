@@ -13,6 +13,27 @@
 [node name="Mines" type="Node2D"]
 script = ExtResource("1_fyqyq")
 
+[node name="Buttons" type="HBoxContainer" parent="."]
+z_index = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartMining" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "Start!
+"
+
+[node name="ShopButton" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "Shop"
+
+[node name="IdleShopButton" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "Idling"
+
 [node name="GUI" parent="." instance=ExtResource("2_1d28e")]
 
 [node name="Background" type="Parallax2D" parent="."]
@@ -22,48 +43,46 @@ repeat_times = 20
 [node name="bgDirt" type="Sprite2D" parent="Background"]
 texture = ExtResource("2_awnir")
 
-[node name="ShopButton" type="Button" parent="."]
-offset_left = 100.0
-offset_right = 200.0
-offset_bottom = 100.0
-text = "Shop"
-
-[node name="IdleShopButton" type="Button" parent="."]
-offset_left = 200.0
-offset_right = 300.0
-offset_bottom = 100.0
-text = "Idling"
-
 [node name="MineZones" type="Node2D" parent="."]
 script = ExtResource("3_2au7w")
 
 [node name="gotoMarket" type="RayCast2D" parent="MineZones"]
 target_position = Vector2(0, 1500)
 
-[node name="StartMining" type="Button" parent="MineZones"]
-offset_right = 100.0
-offset_bottom = 100.0
-text = "Start!
-"
-
 [node name="ShopGUI" type="Node2D" parent="."]
 
-[node name="Momoyo" type="Sprite2D" parent="ShopGUI"]
+[node name="Characters" type="Node2D" parent="ShopGUI"]
+
+[node name="Momoyo" type="Sprite2D" parent="ShopGUI/Characters"]
 z_index = 1
 texture_filter = 1
 texture = ExtResource("4_8ojic")
 
-[node name="MomoyoFrame" type="Sprite2D" parent="ShopGUI"]
+[node name="MomoyoFrame" type="Sprite2D" parent="ShopGUI/Characters"]
 z_index = 2
 texture = ExtResource("6_bmy1k")
 
-[node name="Chimata" type="Sprite2D" parent="ShopGUI"]
+[node name="Chimata" type="Sprite2D" parent="ShopGUI/Characters"]
 z_index = 1
 texture = ExtResource("6_lrki8")
 
-[node name="ChimataFrame" type="Sprite2D" parent="ShopGUI"]
+[node name="ChimataFrame" type="Sprite2D" parent="ShopGUI/Characters"]
 z_index = 2
 texture = ExtResource("6_bmy1k")
+
+[node name="Names" type="Node2D" parent="ShopGUI"]
+
+[node name="ChimataName" type="Label" parent="ShopGUI/Names"]
+z_index = 2
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Chimata"
+
+[node name="MomoyoName" type="Label" parent="ShopGUI/Names"]
+z_index = 2
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Momoyo"
 
 [node name="mDialogue" type="Label" parent="ShopGUI"]
 z_index = 2
@@ -87,7 +106,7 @@ script = null
 [node name="ShopGrid" type="GridContainer" parent="Shop"]
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 2
+columns = 4
 
 [node name="Moves" type="Button" parent="Shop/ShopGrid"]
 custom_minimum_size = Vector2(32, 32)
@@ -126,7 +145,7 @@ script = null
 [node name="IdleShopGrid" type="GridContainer" parent="IdleShop"]
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 2
+columns = 4
 
 [node name="idlerXs" type="Button" parent="IdleShop/IdleShopGrid"]
 custom_minimum_size = Vector2(32, 32)
@@ -142,9 +161,9 @@ layout_mode = 2
 [node name="idlerSText" type="Label" parent="IdleShop/IdleShopGrid"]
 layout_mode = 2
 
-[connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
-[connection signal="pressed" from="IdleShopButton" to="." method="_on_idle_shop_button_pressed"]
-[connection signal="pressed" from="MineZones/StartMining" to="MineZones" method="_on_start_mining_pressed"]
+[connection signal="pressed" from="Buttons/StartMining" to="MineZones" method="_on_start_mining_pressed"]
+[connection signal="pressed" from="Buttons/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="Buttons/IdleShopButton" to="." method="_on_idle_shop_button_pressed"]
 [connection signal="pressed" from="Shop/ShopGrid/Moves" to="." method="_on_moves_pressed"]
 [connection signal="pressed" from="Shop/ShopGrid/Moves" to="Shop" method="_on_moves_pressed"]
 [connection signal="pressed" from="Shop/ShopGrid/Bombs" to="." method="_on_bombs_pressed"]

@@ -52,6 +52,11 @@ func _ready():
 	$CardSale/Buttons/Sell.visible = false
 	$CardSale/Buttons/HiLo.visible = false
 	$CardSale/Buttons/Blackjack.visible = false
+	
+	$CardSale/Characters/CallChara/Reimu/ReimuSale/pressE.position = Vector2(0,-64)
+	$CardSale/Characters/CallChara/Sakuya/SakuyaHiLo/pressE.position = Vector2(0,-64)
+	$CardSale/Characters/CallChara/Marisa/MarisaBlackjack/pressE.position = Vector2(0,-64)
+	$CardSale/Characters/CallChara/Sanae/SanaeCardFlip/pressE.position = Vector2(0,-64)
 
 #Picks the right character and begins a sale
 func _input(event):
