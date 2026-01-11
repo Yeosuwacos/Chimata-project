@@ -7,6 +7,7 @@ extends Node2D
 @onready var locationY = 0
 @onready var tilemap = get_node("mineWindow/oreMap")
 @onready var chimataScene = preload("res://entities/characters/chimata.tscn")
+@onready var chimata = chimataScene.instantiate()
 
 #Sets the amount of utilities 
 @onready var bombs = Global.bombQty
@@ -18,7 +19,6 @@ func _ready():
 	Global.isMining = true
 	
 	#Loads Chimata in the right spot
-	var chimata = chimataScene.instantiate()
 	add_child(chimata)
 	chimata.position = Vector2((chimataLocation[0]*128+32),(chimataLocation[1]*128+64))
 	
@@ -122,6 +122,7 @@ func _physics_process(delta):
 				chimataLocation[1] += Global.tpStr
 				updateLocation()
 				mineTile(0,0,Global.addActive)
+				chimata.position.y += 128*Global.tpStr
 				tps -= 1
 				
 		if Input.is_action_just_pressed("addStr"):
