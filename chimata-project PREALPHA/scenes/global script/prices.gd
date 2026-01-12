@@ -4,6 +4,11 @@ extends Node2D
 var MoreMoves = 100
 var MoreMovesBought = 0
 
+var Mult = 250
+var MultBought = 0
+
+var MultStr = 350
+
 var MoreBombs = 200
 var MoreBombsBought = 0
 

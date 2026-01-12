@@ -19,8 +19,8 @@ var bombQty = 0
 var tpStr = 5
 var tpQty = 0
 
-var addStr = 2
-var addQty = 0
+var multStr = 2
+var multQty = 0
 var addActive = false
 
 #Idler shop variables

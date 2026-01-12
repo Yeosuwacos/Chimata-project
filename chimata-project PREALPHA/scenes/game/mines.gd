@@ -31,6 +31,9 @@ func _ready():
 	$IdleShop.position = Vector2(get_viewport_rect().size.x/2 - itemChoiceSize.x/2, \
 	get_viewport_rect().size.y - itemChoiceSize.y)
 	$ShopGUI/mDialogue.position = Vector2(characterSize.x, get_viewport_rect().size.y - shopSize.y) 
+	$ShopGUI/ItemDesc.size = Vector2(get_viewport_rect().size.x - characterSize.x*2, 100)
+	$ShopGUI/ItemDesc.position = Vector2(get_viewport_rect().size.x/2 - $ShopGUI/ItemDesc.size.x/2, \
+	get_viewport_rect().size.y - $ShopGUI/ItemDesc.size.y)
 	
 	#Interaction areas placement 
 	$Buttons.add_theme_constant_override("separation", get_viewport_rect().size.x/4)
@@ -142,6 +145,14 @@ func _on_moves_pressed() -> void:
 func _on_bombs_pressed() -> void:
 	if Global.funds >= Prices.MoreBombs:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		
+func _on_mult_pressed() -> void:
+	if Global.funds >= Prices.Mult:
+		$ShopGUI/Chatacters/Momoyo.texture = momoyoHappy
+		
+func _on_mult_str_pressed() -> void:
+	if Global.funds >= Prices.MultStr:
+		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
 
 func _on_bomb_power_pressed() -> void:
 	if Global.funds >= Prices.BombPower:
@@ -151,6 +162,10 @@ func _on_t_ps_pressed() -> void:
 	if Global.funds >= Prices.MoreTPs:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
 
+func _on_t_ppower_pressed() -> void:
+	if Global.funds >= Prices.TPpower:
+		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+
 func _on_idler_xs_pressed() -> void:
 	if Global.funds >= Prices.idleXs:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
@@ -158,3 +173,39 @@ func _on_idler_xs_pressed() -> void:
 func _on_idler_s_pressed() -> void:
 	if Global.funds >= Prices.idleS:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+
+#Description for every item
+func _on_moves_mouse_entered() -> void:
+	$ShopGUI/ItemDesc.text = "Grants you 10 extra steps, allowing you to go further down the mines."
+func _on_moves_mouse_exited() -> void:
+	$ShopGUI/ItemDesc.text = ""
+
+func _on_bombs_mouse_entered() -> void:
+	$ShopGUI/ItemDesc.text = "Grants you 1 bomb, which can be used to dig out every tile around you."
+func _on_bombs_mouse_exited() -> void:
+	$ShopGUI/ItemDesc.text = ""
+
+func _on_bomb_power_mouse_entered() -> void:
+	$ShopGUI/ItemDesc.text = "Increases the bombs' strength, enabling it to dig out more tiles with one bomb."
+func _on_bomb_power_mouse_exited() -> void:
+	$ShopGUI/ItemDesc.text = ""
+
+func _on_t_ps_mouse_entered() -> void:
+	$ShopGUI/ItemDesc.text = "Warps you deeper down with only 1 move consumed. Each purchase adds 1 to your teleport item count."
+func _on_t_ps_mouse_exited() -> void:
+	$ShopGUI/ItemDesc.text = ""
+
+func _on_t_ppower_mouse_entered() -> void:
+	$ShopGUI/ItemDesc.text = "Increases the teleport's range by 5."
+func _on_t_ppower_mouse_exited() -> void:
+	$ShopGUI/ItemDesc.text = ""
+
+func _on_mult_mouse_entered() -> void:
+	$ShopGUI/ItemDesc.text = "Grants you increased ore yield for 1 move. Each purchase adds 1 to your multiplier count."
+func _on_mult_mouse_exited() -> void:
+	$ShopGUI/ItemDesc.text = ""
+
+func _on_mult_str_mouse_entered() -> void:
+	$ShopGUI/ItemDesc.text = "Increases the multiplier's ore amount by 1"
+func _on_mult_str_mouse_exited() -> void:
+	$ShopGUI/ItemDesc.text = ""

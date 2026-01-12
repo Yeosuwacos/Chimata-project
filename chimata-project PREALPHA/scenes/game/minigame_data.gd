@@ -12,7 +12,7 @@ extends Node2D
 #Sets the amount of utilities 
 @onready var bombs = Global.bombQty
 @onready var tps = Global.tpQty
-@onready var adds = Global.addQty
+@onready var mults = Global.multQty
 
 func _ready():
 	#Sets the isMining flag to true
@@ -126,9 +126,9 @@ func _physics_process(delta):
 				tps -= 1
 				
 		if Input.is_action_just_pressed("addStr"):
-			if adds > 0:
+			if mults > 0:
 				Global.addActive = true
-				adds -= 1
+				mults -= 1
 	#Brings up the minigame end screen (stats and button)
 	elif moves == 0:
 		endGame()
@@ -150,7 +150,7 @@ func updateLocation():
 func add_ore(nb,mult):
 	var strength = 1
 	if mult == true:
-		strength = Global.addStr
+		strength = Global.multStr
 		
 	match nb:
 		1: ore_xs += strength
