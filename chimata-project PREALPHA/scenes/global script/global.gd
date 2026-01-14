@@ -11,7 +11,7 @@ var menuOpen = false
 
 #Mine minigame variables
 var isMining = false
-var moves = 20
+var moves = 50
 
 var bombStr = 2
 var bombQty = 0
@@ -68,7 +68,7 @@ var dragon_gem_l = 0
 var dragon_gem_xl = 0
 
 #Workshop resources
-var ability_card_xs = 1
+var ability_card_xs = 0
 var ability_card_s = 0
 var ability_card_m = 0
 var ability_card_l = 0

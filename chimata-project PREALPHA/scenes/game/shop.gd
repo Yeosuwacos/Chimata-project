@@ -2,7 +2,7 @@ extends Node2D
 
 #Prepares the shop for when it is opened
 func _ready():
-	$ShopGrid/MovesText.text = "+10 moves: " + str(floori(Prices.MoreMoves))
+	$ShopGrid/MovesText.text = "+25  moves: " + str(floori(Prices.MoreMoves))
 	$ShopGrid/MultText.text = "+1 ore multiplier: " + str(floori(Prices.MoreMoves))
 	$ShopGrid/MultStrText.text = "+1 multiplier strength: " + str(floori(Prices.Mult))
 	$ShopGrid/BombsText.text = "+1 bomb: " + str(floori(Prices.MoreBombs))
@@ -16,10 +16,10 @@ func _ready():
 func _on_moves_pressed() -> void:
 	if Global.funds >= Prices.MoreMoves:
 		Global.funds -= Prices.MoreMoves
-		Global.moves += 10
+		Global.moves += 25
 		Prices.MoreMovesBought += 1
 		Prices.MoreMoves += 10*Prices.MoreMovesBought**1.5
-		$ShopGrid/MovesText.text = "+10 moves: " + str(floori(Prices.MoreMoves))
+		$ShopGrid/MovesText.text = "+25 moves: " + str(floori(Prices.MoreMoves))
 		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
 
 #Buys more multipliers

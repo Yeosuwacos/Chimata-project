@@ -57,7 +57,7 @@ func _ready():
 @onready var ore_xl = 0
 
 #Calculates the amount of moves Chimata is allowed to do
-@onready var moves = Global.moves + 1000
+@onready var moves = Global.moves 
 
 #Generates clumps of ores (flood fill algorithm)
 func placeOres(startPos: Vector2i, type: int):
