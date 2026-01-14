@@ -1,7 +1,9 @@
 extends Node2D
 
 #Resolution settings
-var res = Vector2i(1280,720)
+var res = Vector2(1920,1080)
+var gameSize = Vector2(1920,640)
+var charaSize = Vector2(512,640)
 
 #Dev mode confirmation
 var passwordEntered = false

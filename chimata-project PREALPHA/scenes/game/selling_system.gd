@@ -1,10 +1,9 @@
 extends Node2D
 
 #Layout for minigames
-@onready var minigameSize = Vector2(1280,450)
-@onready var gameAreaSize = Vector2(480,360)
-@onready var characterSize = Vector2(360,450)
-@onready var chimataSize = Vector2(420,510)
+@onready var minigameSize = Global.gameSize
+@onready var gameAreaSize = Vector2(Global.gameSize.x/3,Global.gameSize.y)
+@onready var characterSize = Global.charaSize
 @onready var viewX = get_viewport_rect().size.x
 @onready var viewY = get_viewport_rect().size.y
 @onready var currentHover = ""
@@ -20,6 +19,7 @@ func _ready():
 	#Sets the scale/layout for the characters and the frames
 
 	$CardSale/Characters/Sprites/OpponentFrame.position = Vector2(characterSize.x/2, viewY - characterSize.y/2)
+	$CardSale/Characters/Sprites/OpponentFrame.scale = characterSize/$CardSale/Characters/Sprites/OpponentFrame.texture.get_size()
 
 	$CardSale/Characters/Sprites/Sakuya.scale = characterSize/$CardSale/Characters/Sprites/Sakuya.texture.get_size()
 	$CardSale/Characters/Sprites/Sakuya.position = Vector2(characterSize.x/2, viewY - characterSize.y/2)
@@ -27,6 +27,7 @@ func _ready():
 	$CardSale/Characters/Sprites/Chimata.scale = characterSize/$CardSale/Characters/Sprites/Chimata.texture.get_size()
 	$CardSale/Characters/Sprites/Chimata.position = Vector2(viewX - characterSize.x/2, viewY - characterSize.y/2)
 	$CardSale/Characters/Sprites/ChimataFrame.position = Vector2(viewX - characterSize.x/2, viewY - characterSize.y/2)
+	$CardSale/Characters/Sprites/ChimataFrame.scale = characterSize/$CardSale/Characters/Sprites/ChimataFrame.texture.get_size()
 	
 	#Creates the layout for the interface
 	
@@ -38,9 +39,9 @@ func _ready():
 	$CardSale/Characters/dialogue.position = Vector2(characterSize.x, viewY - minigameSize.y) 
 	
 	$CardSale/Characters/Names/ChimataName.position = Vector2(viewX - characterSize.x/2 - \
-	$CardSale/Characters/Names/ChimataName.size.x/2, viewY - characterSize.y + 12)
+	$CardSale/Characters/Names/ChimataName.size.x/2, viewY - characterSize.y + 16)
 	$CardSale/Characters/Names/OpponentName.position = Vector2(characterSize.x/2 - \
-	$CardSale/Characters/Names/OpponentName.size.x/2, viewY - characterSize.y + 12)
+	$CardSale/Characters/Names/OpponentName.size.x/2, viewY - characterSize.y + 16)
 	
 	#Places the character calling buttons in good proportions
 	
@@ -50,7 +51,7 @@ func _ready():
 #Replaces the opponent names correctly
 func replace():
 	$CardSale/Characters/Names/OpponentName.position = Vector2(characterSize.x/2 - \
-	$CardSale/Characters/Names/OpponentName.size.x/2, viewY - characterSize.y + 12)
+	$CardSale/Characters/Names/OpponentName.size.x/2, viewY - characterSize.y + 16)
 
 #Picks the right character and begins a sale
 func _input(event):

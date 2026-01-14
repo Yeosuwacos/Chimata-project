@@ -5,9 +5,9 @@ extends Node2D
 @onready var optionPopup = options.instantiate()
 
 #Interface variables
-@onready var shopSize = Vector2(1280,450)
-@onready var itemChoiceSize = Vector2(480,360)
-@onready var characterSize = Vector2(360,450)
+@onready var shopSize = Global.gameSize
+@onready var itemChoiceSize = Vector2(Global.gameSize.x/3, Global.gameSize.y)
+@onready var characterSize = Global.charaSize
 
 #Momoyo texture
 @onready var momoyo = load("res://assets/sprites/Momoyo.png")
@@ -26,10 +26,10 @@ func _ready():
 	optionPopup.visible = false
 	$ShopGUI/BG.size = shopSize
 	$ShopGUI/BG.position = Vector2(0, get_viewport_rect().size.y - shopSize.y)
-	$Shop.position = Vector2(get_viewport_rect().size.x/2 - itemChoiceSize.x/2, \
-	get_viewport_rect().size.y - itemChoiceSize.y)
-	$IdleShop.position = Vector2(get_viewport_rect().size.x/2 - itemChoiceSize.x/2, \
-	get_viewport_rect().size.y - itemChoiceSize.y)
+	$Shop.position = Vector2(get_viewport_rect().size.x/2 - itemChoiceSize.x/2 + 50, \
+	get_viewport_rect().size.y - itemChoiceSize.y + 50)
+	$IdleShop.position = Vector2(get_viewport_rect().size.x/2 - itemChoiceSize.x/2 + 50, \
+	get_viewport_rect().size.y - itemChoiceSize.y + 50)
 	$ShopGUI/mDialogue.position = Vector2(characterSize.x, get_viewport_rect().size.y - shopSize.y) 
 	$ShopGUI/ItemDesc.size = Vector2(get_viewport_rect().size.x - characterSize.x*2, 100)
 	$ShopGUI/ItemDesc.position = Vector2(get_viewport_rect().size.x/2 - $ShopGUI/ItemDesc.size.x/2, \
@@ -43,14 +43,16 @@ func _ready():
 	$ShopGUI/Characters/Momoyo.scale = characterSize/$ShopGUI/Characters/Momoyo.texture.get_size()
 	$ShopGUI/Characters/Momoyo.position = Vector2(characterSize.x/2, get_viewport_rect().size.y - characterSize.y/2)
 	$ShopGUI/Characters/MomoyoFrame.position = Vector2(characterSize.x/2, get_viewport_rect().size.y - characterSize.y/2)
+	$ShopGUI/Characters/MomoyoFrame.scale = characterSize/$ShopGUI/Characters/MomoyoFrame.texture.get_size()
 	$ShopGUI/Names/MomoyoName.position = Vector2(characterSize.x/2 - $ShopGUI/Names/MomoyoName.size.x/2, \
-	get_viewport_rect().size.y - characterSize.y + 12)
+	get_viewport_rect().size.y - characterSize.y + 16)
 	
 	$ShopGUI/Characters/Chimata.scale = characterSize/$ShopGUI/Characters/Chimata.texture.get_size()
 	$ShopGUI/Characters/Chimata.position = Vector2(get_viewport_rect().size.x - characterSize.x/2, get_viewport_rect().size.y - characterSize.y/2)
 	$ShopGUI/Characters/ChimataFrame.position = Vector2(get_viewport_rect().size.x - characterSize.x/2, get_viewport_rect().size.y - characterSize.y/2)
+	$ShopGUI/Characters/ChimataFrame.scale = characterSize/$ShopGUI/Characters/ChimataFrame.texture.get_size()
 	$ShopGUI/Names/ChimataName.position = Vector2(get_viewport_rect().size.x - characterSize.x/2 - $ShopGUI/Names/ChimataName.size.x/2, \
-	get_viewport_rect().size.y - characterSize.y + 12)
+	get_viewport_rect().size.y - characterSize.y + 16)
 	
 	
 	#Hides the shop until the button is pressed
