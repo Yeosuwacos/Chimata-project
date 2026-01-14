@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwsd5ysbvwbww"]
+[gd_scene load_steps=3 format=3 uid="uid://cwsd5ysbvwbww"]
 
 [ext_resource type="Script" uid="uid://dtg08dba76ja5" path="res://scenes/menu/menu.gd" id="1_klgdb"]
+[ext_resource type="Script" uid="uid://cmba8laa7xmcc" path="res://scenes/menu/select_res.gd" id="2_mcvr8"]
 
 [node name="Menu" type="Control"]
 z_index = 2
@@ -112,6 +113,49 @@ Interweb
 OST: 
 Lamp"
 
+[node name="SelectRes" type="Node2D" parent="."]
+position = Vector2(900, 0)
+script = ExtResource("2_mcvr8")
+
+[node name="Options" type="GridContainer" parent="SelectRes"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="640x480" type="Button" parent="SelectRes/Options"]
+layout_mode = 2
+text = "640x480"
+
+[node name="1280x720" type="Button" parent="SelectRes/Options"]
+layout_mode = 2
+text = "1280x720"
+
+[node name="1920x1080" type="Button" parent="SelectRes/Options"]
+layout_mode = 2
+text = "1920x1080
+"
+
+[node name="2560x1440" type="Button" parent="SelectRes/Options"]
+layout_mode = 2
+text = "2560x1440
+"
+
+[node name="3480x2160" type="Button" parent="SelectRes/Options"]
+layout_mode = 2
+text = "3480x2160
+"
+
+[node name="Fullscreen" type="Button" parent="SelectRes/Options"]
+layout_mode = 2
+text = "Fullscreen mode"
+
+[node name="Windowed" type="Button" parent="SelectRes/Options"]
+layout_mode = 2
+text = "Windowed mode"
+
+[node name="GridContainer" type="GridContainer" parent="SelectRes"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="pressed" from="DevMode/Access" to="." method="_on_access_pressed"]
 [connection signal="pressed" from="DevMode/Resources/MoreFundsAdd" to="." method="_on_more_funds_add_pressed"]
 [connection signal="pressed" from="DevMode/Resources/LotsMoreFundsAdd" to="." method="_on_lots_more_funds_add_pressed"]
@@ -119,3 +163,10 @@ Lamp"
 [connection signal="pressed" from="DevMode/Resources/MoreCardsAdd" to="." method="_on_more_cards_add_pressed"]
 [connection signal="pressed" from="DevMode/Resources/ResetRem" to="." method="_on_reset_rem_pressed"]
 [connection signal="pressed" from="DevMode/Resources/Reload" to="." method="_on_reload_pressed"]
+[connection signal="pressed" from="SelectRes/Options/640x480" to="SelectRes" method="_on_x_480_pressed"]
+[connection signal="pressed" from="SelectRes/Options/1280x720" to="SelectRes" method="_on_x_720_pressed"]
+[connection signal="pressed" from="SelectRes/Options/1920x1080" to="SelectRes" method="_on_x_1080_pressed"]
+[connection signal="pressed" from="SelectRes/Options/2560x1440" to="SelectRes" method="_on_x_1440_pressed"]
+[connection signal="pressed" from="SelectRes/Options/3480x2160" to="SelectRes" method="_on_x_2160_pressed"]
+[connection signal="pressed" from="SelectRes/Options/Fullscreen" to="SelectRes" method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="SelectRes/Options/Windowed" to="SelectRes" method="_on_windowed_pressed"]
