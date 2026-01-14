@@ -18,7 +18,7 @@ script = ExtResource("1_hpopc")
 
 [node name="Background" type="Parallax2D" parent="."]
 repeat_size = Vector2(128, 128)
-repeat_times = 20
+repeat_times = 100
 
 [node name="bgDirt" type="Sprite2D" parent="Background"]
 texture = ExtResource("2_j1wap")
@@ -226,6 +226,7 @@ texture = ExtResource("5_fwmry")
 
 [node name="ChimataFrame" type="Sprite2D" parent="SellingSystem/CardSale/Characters/Sprites"]
 visible = false
+z_index = 2
 texture = ExtResource("7_mmnd1")
 
 [node name="Chimata" type="Sprite2D" parent="SellingSystem/CardSale/Characters/Sprites"]

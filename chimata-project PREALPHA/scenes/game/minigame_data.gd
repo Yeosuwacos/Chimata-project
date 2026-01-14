@@ -163,7 +163,7 @@ func _physics_process(delta):
 				Global.addActive = true
 				mults -= 1
 	#Brings up the minigame end screen (stats and button)
-	elif moves == 0:
+	elif moves <= 0:
 		endGame()
 		
 #Executes multiple mining operations

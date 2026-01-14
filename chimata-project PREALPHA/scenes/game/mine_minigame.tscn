@@ -30,7 +30,7 @@ ores = Array[ExtResource("2_7hdtf")]([ExtResource("3_gdpjo"), ExtResource("4_3t2
 
 [node name="Background" type="Parallax2D" parent="."]
 repeat_size = Vector2(128, 128)
-repeat_times = 250
+repeat_times = 1000
 
 [node name="bgDirt" type="Sprite2D" parent="Background"]
 position = Vector2(-24, -24)

@@ -5,7 +5,7 @@ func _ready():
 	#Place the paths to other locations
 	
 	$gotoMine.position = Vector2(0,0)
-	$gotoWorkshop.position = Vector2(Global.res.x,0)
+	$gotoWorkshop.position = Vector2(get_viewport_rect().size.x,0)
 
 func _physics_process(delta):
 	

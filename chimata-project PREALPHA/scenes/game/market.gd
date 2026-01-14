@@ -4,7 +4,7 @@ extends Node2D
 @onready var chimataScene = preload("res://entities/characters/chimata.tscn")
 @onready var options = preload("res://scenes/menu/menu.tscn")
 @onready var optionPopup = options.instantiate()
-@onready var minigameSize = Vector2(1280,450)
+@onready var minigameSize = Global.gameSize
 @onready var cardInterface = Vector2(50,50)
 
 func _ready():

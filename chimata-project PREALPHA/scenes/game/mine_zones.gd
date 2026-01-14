@@ -5,7 +5,7 @@ func _ready():
 	
 	#Place the paths to other locations
 	
-	$gotoMarket.position = Vector2i(Global.res.x,0)
+	$gotoMarket.position = Vector2i(get_viewport_rect().size.x,0)
 
 func _physics_process(delta):
 	
