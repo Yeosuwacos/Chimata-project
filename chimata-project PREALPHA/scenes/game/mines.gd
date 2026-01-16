@@ -152,7 +152,7 @@ func _on_bombs_pressed() -> void:
 		
 func _on_mult_pressed() -> void:
 	if Global.funds >= Prices.Mult:
-		$ShopGUI/Chatacters/Momoyo.texture = momoyoHappy
+		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
 		
 func _on_mult_str_pressed() -> void:
 	if Global.funds >= Prices.MultStr:
