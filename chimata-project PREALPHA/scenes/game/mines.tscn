@@ -63,7 +63,7 @@ texture = ExtResource("2_cuk8l")
 
 [node name="Background" type="Parallax2D" parent="."]
 repeat_size = Vector2(128, 128)
-repeat_times = 100
+repeat_times = 40
 
 [node name="bgDirt" type="Sprite2D" parent="Background"]
 texture = ExtResource("2_awnir")
