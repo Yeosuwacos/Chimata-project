@@ -80,6 +80,9 @@ func saveGame():
 		
 		"Frenzy" : Prices.Frenzy,
 		"FrenzyBought" : Prices.FrenzyBought,
+		
+		"FrenzyPwr" : Prices.FrenzyPwr,
+		"FrenzyPwrBought" : Prices.FrenzyPwrBought,
 
 		"idleXsPrice" : Prices.idleXs,
 		"idleXsBought" : Prices.idleXsBought,
@@ -175,6 +178,9 @@ func loadGame():
 	
 	Prices.Frenzy = loaded.get("Frenzy")
 	Prices.FrenzyBought = loaded.get("FrenzyBought")
+	
+	Prices.FrenzyPwr = loaded.get("FrenzyPwr")
+	Prices.FrenzyPwrBought = loaded.get("FrenzyPwrBought")
 
 	Prices.idleXs = loaded.get("idleXsPrice")
 	Prices.idleXsBought = loaded.get("idleXsBought")
@@ -289,6 +295,9 @@ func loadDefault():
 
 	Prices.Frenzy = 1000
 	Prices.FrenzyBought = 0
+	
+	Prices.FrenzyPwr = 1350
+	Prices.FrenzyPwrBought = 0
 
 	#Idle shop
 	Prices.idleXs = 1000

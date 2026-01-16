@@ -25,6 +25,9 @@ var TPpowerBought = 0
 var Frenzy = 1000
 var FrenzyBought = 0
 
+var FrenzyPwr = 1350
+var FrenzyPwrBought = 0
+
 #Idle shop
 var idleXs = 1000
 var idleXsBought = 0

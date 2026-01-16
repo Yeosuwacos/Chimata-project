@@ -26,6 +26,7 @@ func _ready():
 		$ShopGrid/MomoyoFrenzyText.text = "+1 frenzy: MAX"
 	else:
 		$ShopGrid/MomoyoFrenzyText.text = "+1 frenzy: " + str(floori(Prices.Frenzy))
+	$ShopGrid/FrenzyPowerText.text = "+3 frenzy power: " + str(floori(Prices.FrenzyPwr))
 	
 	$GUI.position.y = $ShopGrid.size.y
 	
@@ -103,6 +104,7 @@ func _on_t_ps_pressed() -> void:
 			$ShopGrid/TPsText.text = "+1 teleport: " + str(floori(Prices.MoreTPs))
 		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
 
+#Increases TP power
 func _on_t_ppower_pressed() -> void:
 	if Global.funds >= Prices.TPpower:
 		Global.funds -= Prices.TPpower
@@ -112,6 +114,7 @@ func _on_t_ppower_pressed() -> void:
 		$ShopGrid/TPpowerText.text = "+5 teleport power: " + str(floori(Prices.TPpower))
 		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
 
+#Adds more frenzies
 func _on_momoyo_frenzy_pressed() -> void:
 	if Global.funds >= Prices.Frenzy && Global.frenzyQty < 10:
 		Global.funds -= Prices.Frenzy
@@ -122,4 +125,14 @@ func _on_momoyo_frenzy_pressed() -> void:
 			$ShopGrid/MomoyoFrenzyText.text = "+1 frenzy: MAX"
 		else:
 			$ShopGrid/MomoyoFrenzyText.text = "+1 frenzy: " + str(floori(Prices.Frenzy))
+		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+
+#Increases frenzy power
+func _on_frenzy_power_pressed() -> void:
+	if Global.funds >= Prices.FrenzyPwr:
+		Global.funds -= Prices.FrenzyPwr
+		Global.frenzyStr += 3
+		Prices.FrenzyPwrBought += 1
+		Prices.FrenzyPwr += 400*Prices.FrenzyPwrBought**1.4
+		$ShopGrid/FrenzyPowerText.text = "+3 frenzy power: " + str(floori(Prices.FrenzyPwr))
 		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
