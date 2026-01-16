@@ -24,6 +24,7 @@ func _ready():
 	add_child(optionPopup)
 	optionPopup.position = Vector2i(0,0)
 	optionPopup.visible = false
+	
 	$ShopGUI/BG.size = shopSize
 	$ShopGUI/BG.position = Vector2(0, get_viewport_rect().size.y - shopSize.y)
 	$Shop.position = Vector2(get_viewport_rect().size.x/2 - itemChoiceSize.x/2 + 50, \
@@ -140,6 +141,7 @@ func _input(event):
 						$ShopGUI/Characters/Momoyo.texture = momoyo
 
 #Momoyo expressions
+#Shop
 func _on_moves_pressed() -> void:
 	if Global.funds >= Prices.MoreMoves:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
@@ -167,7 +169,12 @@ func _on_t_ps_pressed() -> void:
 func _on_t_ppower_pressed() -> void:
 	if Global.funds >= Prices.TPpower:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		
+func _on_momoyo_frenzy_pressed() -> void:
+	if Global.funds >= Prices.Frenzy:
+		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
 
+#Idle shop
 func _on_idler_xs_pressed() -> void:
 	if Global.funds >= Prices.idleXs:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
@@ -210,6 +217,11 @@ func _on_mult_mouse_exited() -> void:
 func _on_mult_str_mouse_entered() -> void:
 	$ShopGUI/ItemDesc.text = "Increases the multiplier's ore amount by 1"
 func _on_mult_str_mouse_exited() -> void:
+	$ShopGUI/ItemDesc.text = ""
+	
+func _on_momoyo_frenzy_mouse_entered() -> void:
+	$ShopGUI/ItemDesc.text = "Summons Momoyo to bore down the tiles adjacent and under you. Each purchase adds 1 to your frenzy count."
+func _on_momoyo_frenzy_mouse_exited() -> void:
 	$ShopGUI/ItemDesc.text = ""
 	
 func _exit_tree():

@@ -30,6 +30,9 @@ func saveGame():
 		"multStr" : Global.multStr,
 		"multQty" : Global.multQty,
 		
+		"frenzyStr" : Global.frenzyStr,
+		"frenzyQty" : Global.frenzyQty,
+		
 		"idleXs" : Global.idleXs,
 		"idleS" : Global.idleS,
 
@@ -71,6 +74,9 @@ func saveGame():
 		"MoreTPsBought" : Prices.MoreTPsBought,
 
 		"TPpower" : Prices.TPpower,
+		
+		"Frenzy" : Prices.Frenzy,
+		"FrenzyBought" : Prices.FrenzyBought,
 
 		"idleXsPrice" : Prices.idleXs,
 		"idleXsBought" : Prices.idleXsBought,
@@ -92,7 +98,7 @@ func loadGame():
 	var path = "user://save.dat"
 	
 	if not FileAccess.file_exists(path):
-		return
+		loadDefault()
 	
 	var savefile = FileAccess.open(path,FileAccess.READ)
 	var loaded = savefile.get_var()
@@ -105,8 +111,6 @@ func loadGame():
 
 	Global.passwordEntered = loaded.get("passwordEntered")
 
-	Global.menuOpen = loaded.get("menuOpen")
-
 	Global.moves = loaded.get("moves")
 
 	Global.bombStr = loaded.get("bombStr")
@@ -117,6 +121,9 @@ func loadGame():
 
 	Global.multStr = loaded.get("multStr")
 	Global.multQty = loaded.get("multQty")
+	
+	Global.frenzyStr = loaded.get("frenzyStr")
+	Global.frenzyQty = loaded.get("frenzyQty")
 
 	Global.idleXs = loaded.get("idleXs")
 	Global.idleS = loaded.get("idleS")
@@ -159,9 +166,124 @@ func loadGame():
 	Prices.MoreTPsBought = loaded.get("MoreTPsBought")
 
 	Prices.TPpower = loaded.get("TPpower")
+	
+	Prices.Frenzy = loaded.get("Frenzy")
+	Prices.FrenzyBought = loaded.get("FrenzyBought")
 
 	Prices.idleXs = loaded.get("idleXsPrice")
 	Prices.idleXsBought = loaded.get("idleXsBought")
 
 	Prices.idleS = loaded.get("idleSPrice")
 	Prices.idleSBought = loaded.get("idleSBought")
+
+func loadDefault():
+	#Resolution settings
+	Global.res = Vector2(1920,1080)
+	Global.gameSize = Vector2(1920,640)
+	Global.charaSize = Vector2(512,640)
+
+	#Dev mode confirmation
+	Global.passwordEntered = false
+
+	#Options menu settings
+	Global.menuOpen = false
+
+	#Mine minigame variables
+	Global.isMining = false
+	Global.moves = 50
+
+	Global.bombStr = 2
+	Global.bombQty = 0
+
+	Global.tpStr = 5
+	Global.tpQty = 0
+
+	Global.multStr = 2
+	Global.multQty = 0
+	Global.addActive = false
+
+	Global.frenzyStr = 6
+	Global.frenzyQty = 0
+
+	#Idler shop variables
+	Global.idleXs = 0
+	Global.idleS = 0
+
+	#Chimata camera flag
+	Global.follow = false
+	Global.maxUP = true
+	Global.maxDOWN = true
+	Global.maxLEFT = true
+	Global.maxRIGHT = true
+	Global.isMoving = true
+
+	#Mine shop
+	Global.mShopOpen = false
+	Global.iShopOpen = false
+
+	#Market minigame variables
+	Global.wager = 0
+
+	#Higher-lower
+	Global.nb1 = 0
+	Global.nb2 = 0
+
+	#Blackjack
+	Global.playerHand = 0
+	Global.marisaHand = 0
+
+	#Workshop minigame variables
+	Global.hittable = false
+
+	#Cards to be sold
+	Global.sold_xs = 0
+	Global.sold_s = 0
+	Global.sold_m = 0
+	Global.sold_l = 0
+	Global.sold_xl = 0
+
+	#Mining resources
+	Global.dragon_gem_xs = 0
+	Global.dragon_gem_s = 0
+	Global.dragon_gem_m = 0
+	Global.dragon_gem_l = 0
+	Global.dragon_gem_xl = 0
+
+	#Workshop resources
+	Global.ability_card_xs = 0
+	Global.ability_card_s = 0
+	Global.ability_card_m = 0
+	Global.ability_card_l = 0
+	Global.ability_card_xl = 0
+
+	#Funds & GUI updating
+	Global.funds = 0
+	
+	#Mining shop
+	Prices.MoreMoves = 100
+	Prices.MoreMovesBought = 0
+
+	Prices.Mult = 250
+	Prices.MultBought = 0
+
+	Prices.MultStr = 350
+
+	Prices.MoreBombs = 200
+	Prices.MoreBombsBought = 0
+
+	Prices.BombPower = 500
+
+	Prices.MoreTPs = 600
+	Prices.MoreTPsBought = 0
+
+	Prices.TPpower = 1000
+
+	Prices.Frenzy = 1000
+	Prices.FrenzyBought = 0
+
+	#Idle shop
+	Prices.idleXs = 1000
+	Prices.idleXsBought = 0
+
+	Prices.idleS = 3000
+	Prices.idleSBought = 0

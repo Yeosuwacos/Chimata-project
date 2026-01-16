@@ -14,6 +14,7 @@ extends Node2D
 @onready var bombs = Global.bombQty
 @onready var tps = Global.tpQty
 @onready var mults = Global.multQty
+@onready var frenzies = Global.frenzyQty
 
 func _ready():
 	#Sets the isMining flag to true
@@ -162,6 +163,16 @@ func _physics_process(delta):
 			if mults > 0:
 				Global.addActive = true
 				mults -= 1
+				
+		if Input.is_action_just_pressed("frenzy"):
+			if frenzies > 0:
+				for depth in range(0,Global.frenzyStr):
+					for width in range(0,2):
+						mineTile(width-1,depth,Global.addActive)
+				chimataLocation[1] += Global.frenzyStr
+				updateLocation()
+				chimata.position.y += 128*Global.frenzyStr
+				frenzies -= 1
 	#Brings up the minigame end screen (stats and button)
 	elif moves <= 0:
 		endGame()

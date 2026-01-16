@@ -25,6 +25,9 @@ var multStr = 2
 var multQty = 0
 var addActive = false
 
+var frenzyStr = 6
+var frenzyQty = 0
+
 #Idler shop variables
 var idleXs = 0
 var idleS = 0
