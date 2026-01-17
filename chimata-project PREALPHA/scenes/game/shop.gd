@@ -30,7 +30,7 @@ func _ready():
 	
 	$GUI.position.y = $ShopGrid.size.y
 	
-	$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+	$GUI/Funds.text = str(floori(Global.funds))
 
 #Buys more moves
 func _on_moves_pressed() -> void:
@@ -40,7 +40,7 @@ func _on_moves_pressed() -> void:
 		Prices.MoreMovesBought += 1
 		Prices.MoreMoves += 50*Prices.MoreMovesBought**1.2
 		$ShopGrid/MovesText.text = "+25 moves: " + str(floori(Prices.MoreMoves))
-		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+		$GUI/Funds.text = str(floori(Global.funds))
 
 #Buys more multipliers
 func _on_mult_pressed() -> void:
@@ -54,7 +54,7 @@ func _on_mult_pressed() -> void:
 			$ShopGrid/MultText.text = "+1 ore multiplier: MAX"
 		else:
 			$ShopGrid/MultText.text = "+1 ore multiplier: " + str(floori(Prices.Mult))
-		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+		$GUI/Funds.text = str(floori(Global.funds))
 		
 #Increases multiplier strength
 func _on_mult_str_pressed() -> void:
@@ -64,7 +64,7 @@ func _on_mult_str_pressed() -> void:
 		Prices.MultStrBought += 1
 		Prices.MultStr += 100*Prices.MultStrBought**1.2
 		$ShopGrid/MultStrText.text = "+1 multiplier strength: " + str(floori(Prices.MultStr))
-		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+		$GUI/Funds.text = str(floori(Global.funds))
 
 #Buys more bombs
 func _on_bombs_pressed() -> void:
@@ -78,7 +78,7 @@ func _on_bombs_pressed() -> void:
 			$ShopGrid/BombsText.text = "+1 bomb: MAX"
 		else:
 			$ShopGrid/BombsText.text = "+1 bomb: " + str(floori(Prices.MoreBombs))
-		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+		$GUI/Funds.text = str(floori(Global.funds))
 
 #Increases bomb power
 func _on_bomb_power_pressed() -> void:
@@ -88,7 +88,7 @@ func _on_bomb_power_pressed() -> void:
 		Prices.BombPowerBought += 1
 		Prices.BombPower += 500*Prices.BombPowerBought**1.6
 		$ShopGrid/BombPowerText.text = "+Bomb power: " + str(floori(Prices.BombPower))
-		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+		$GUI/Funds.text = str(floori(Global.funds))
 
 #Buys more TPs
 func _on_t_ps_pressed() -> void:
@@ -102,7 +102,7 @@ func _on_t_ps_pressed() -> void:
 			$ShopGrid/TPsText.text = "+1 teleport: MAX"
 		else:
 			$ShopGrid/TPsText.text = "+1 teleport: " + str(floori(Prices.MoreTPs))
-		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+		$GUI/Funds.text = str(floori(Global.funds))
 
 #Increases TP power
 func _on_t_ppower_pressed() -> void:
@@ -112,7 +112,7 @@ func _on_t_ppower_pressed() -> void:
 		Prices.TPpowerBought += 1
 		Prices.TPpower += 300*Prices.TPpowerBought**1.5
 		$ShopGrid/TPpowerText.text = "+5 teleport power: " + str(floori(Prices.TPpower))
-		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+		$GUI/Funds.text = str(floori(Global.funds))
 
 #Adds more frenzies
 func _on_momoyo_frenzy_pressed() -> void:
@@ -125,7 +125,7 @@ func _on_momoyo_frenzy_pressed() -> void:
 			$ShopGrid/MomoyoFrenzyText.text = "+1 frenzy: MAX"
 		else:
 			$ShopGrid/MomoyoFrenzyText.text = "+1 frenzy: " + str(floori(Prices.Frenzy))
-		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+		$GUI/Funds.text = str(floori(Global.funds))
 
 #Increases frenzy power
 func _on_frenzy_power_pressed() -> void:
@@ -135,4 +135,4 @@ func _on_frenzy_power_pressed() -> void:
 		Prices.FrenzyPwrBought += 1
 		Prices.FrenzyPwr += 400*Prices.FrenzyPwrBought**1.4
 		$ShopGrid/FrenzyPowerText.text = "+3 frenzy power: " + str(floori(Prices.FrenzyPwr))
-		$GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+		$GUI/Funds.text = str(floori(Global.funds))

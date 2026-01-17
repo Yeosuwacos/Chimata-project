@@ -21,6 +21,7 @@ func _ready():
 	chimata.position = Vector2i(Global.res.x-50,get_viewport_rect().size.y - shopSize.y - 64)
 	
 	#Settings/GUI initialization
+	$GenUI.scale = Global.res / $GenUI.texture.get_size()
 	add_child(optionPopup)
 	optionPopup.position = Vector2i(0,0)
 	optionPopup.visible = false
@@ -55,6 +56,9 @@ func _ready():
 	$ShopGUI/Names/ChimataName.position = Vector2(get_viewport_rect().size.x - characterSize.x/2 - $ShopGUI/Names/ChimataName.size.x/2, \
 	get_viewport_rect().size.y - characterSize.y + 16)
 	
+	#Funds UI
+	$UI/Funds.text = str(floori(Global.funds))
+	$UI/Funds.position = Vector2(24,24)
 	
 	#Hides the shop until the button is pressed
 	Global.mShopOpen = false
@@ -145,47 +149,58 @@ func _input(event):
 func _on_moves_pressed() -> void:
 	if Global.funds >= Prices.MoreMoves:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		$UI/Funds.text = str(floori(Global.funds))
 
 func _on_bombs_pressed() -> void:
 	if Global.funds >= Prices.MoreBombs:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		$UI/Funds.text = str(floori(Global.funds))
 		
 func _on_mult_pressed() -> void:
 	if Global.funds >= Prices.Mult:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		$UI/Funds.text = str(floori(Global.funds))
 		
 func _on_mult_str_pressed() -> void:
 	if Global.funds >= Prices.MultStr:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		$UI/Funds.text = str(floori(Global.funds))
 
 func _on_bomb_power_pressed() -> void:
 	if Global.funds >= Prices.BombPower:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		$UI/Funds.text = str(floori(Global.funds))
 
 func _on_t_ps_pressed() -> void:
 	if Global.funds >= Prices.MoreTPs:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		$UI/Funds.text = str(floori(Global.funds))
 
 func _on_t_ppower_pressed() -> void:
 	if Global.funds >= Prices.TPpower:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		$UI/Funds.text = str(floori(Global.funds))
 		
 func _on_momoyo_frenzy_pressed() -> void:
 	if Global.funds >= Prices.Frenzy:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		$UI/Funds.text = str(floori(Global.funds))
 		
 func _on_frenzy_power_pressed() -> void:
 	if Global.funds >= Prices.FrenzyPwr:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		$UI/Funds.text = str(floori(Global.funds))
 
 #Idle shop
 func _on_idler_xs_pressed() -> void:
 	if Global.funds >= Prices.idleXs:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		$UI/Funds.text = str(floori(Global.funds))
 
 func _on_idler_s_pressed() -> void:
 	if Global.funds >= Prices.idleS:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
+		$UI/Funds.text = str(floori(Global.funds))
 
 #Description for every item
 func _on_moves_mouse_entered() -> void:

@@ -17,7 +17,9 @@ func _ready():
 	#GUI initialization
 	$SellingSystem/CardSale.position = cardInterface
 	$SellingSystem/CardSale/Characters.position = Vector2(-50,-50)
-	$SellingSystem/GUI/Funds.text = "Funds: " + str(floori(Global.funds))
+	
+	$SellingSystem/GUI/Funds.text = str(floori(Global.funds))
+	$SellingSystem/GUI/Funds.position = Vector2(24,24)
 	
 	$SellingSystem/CardSale/Characters/CallChara.position = Vector2(get_viewport_rect().size.x/2 - \
 	$SellingSystem/CardSale/Characters/CallChara.size.x/2, chimata.position.y - 64 - cardInterface.y)
