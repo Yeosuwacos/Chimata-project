@@ -16,6 +16,9 @@ extends Node2D
 @onready var mults = Global.multQty
 @onready var frenzies = Global.frenzyQty
 
+#Calculates the amount of moves Chimata is allowed to do
+@onready var moves = Global.moves 
+
 func _ready():
 	#Sets the isMining flag to true
 	Global.isMining = true
@@ -27,6 +30,16 @@ func _ready():
 	#Makes the camera and the move counter follow chimata
 	Global.follow = true
 	#$mineWindow/moveCounter.position = Vector2((chimataLocation[0]*128+832),(chimataLocation[1]*128-464))
+	
+	#Places the UI
+	$mineWindow/Labels/ResourceBars.position.y = get_viewport_rect().size.y - $mineWindow/Labels/ResourceBars.size.y
+	
+	$mineWindow/Labels/ResourceBars/MovesLeft.value = moves
+	$mineWindow/Labels/ResourceBars/MovesLeft.max_value = moves
+	
+	$mineWindow/Labels/ResourceBars/MultStrLeft.value = mults
+	if mults != 0:
+		$mineWindow/Labels/ResourceBars/MultStrLeft.max_value = mults
 	
 	#Creates the mine as a 2D grid
 	#Places down every tile correctly
@@ -56,9 +69,6 @@ func _ready():
 @onready var ore_m = 0
 @onready var ore_l = 0
 @onready var ore_xl = 0
-
-#Calculates the amount of moves Chimata is allowed to do
-@onready var moves = Global.moves 
 
 #Generates clumps of ores (flood fill algorithm)
 func placeOres(startPos: Vector2i, type: int):
@@ -160,9 +170,10 @@ func _physics_process(delta):
 				tps -= 1
 				
 		if Input.is_action_just_pressed("addStr"):
-			if mults > 0:
+			if mults > 0 && Global.addActive == false:
 				Global.addActive = true
 				mults -= 1
+				$mineWindow/Labels/ResourceBars/MultStrLeft.value -= 1
 				
 		if Input.is_action_just_pressed("frenzy"):
 			if frenzies > 0:
@@ -190,6 +201,7 @@ func updateLocation():
 	locationX = chimataLocation[0]
 	locationY = chimataLocation[1]
 	moves -= 1
+	$mineWindow/Labels/ResourceBars/MovesLeft.value -= 1
 
 #Adds the corresponding ore and multiplier
 func add_ore(nb,mult):
