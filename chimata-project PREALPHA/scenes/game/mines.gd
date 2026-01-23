@@ -152,10 +152,10 @@ func _on_moves_pressed() -> void:
 		Global.moves += 25
 		Prices.MoreMovesBought += 1
 		Prices.MoreMoves += 50*Prices.MoreMovesBought**1.2
-		$Shop/ShopGrid/MovesText.text = "+25 moves: " + str(floori(Prices.MoreMoves))
+		$Shop/ShopGrid/MovesText.text = "+25 stamina: " + str(floori(Prices.MoreMoves))
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
 		$UI/Funds.text = str(floori(Global.funds))
-		
+
 func _on_mult_pressed() -> void:
 	if Global.funds >= Prices.Mult:
 		Global.funds -= Prices.Mult
@@ -264,7 +264,7 @@ func _on_idler_s_pressed() -> void:
 
 #Description for every item
 func _on_moves_mouse_entered() -> void:
-	$ShopGUI/ItemDesc.text = "Grants you 10 extra steps, allowing you to go further down the mines."
+	$ShopGUI/ItemDesc.text = "Grants you 25 extra stamina, allowing you to go further down the mines."
 func _on_moves_mouse_exited() -> void:
 	$ShopGUI/ItemDesc.text = ""
 
@@ -279,7 +279,7 @@ func _on_bomb_power_mouse_exited() -> void:
 	$ShopGUI/ItemDesc.text = ""
 
 func _on_t_ps_mouse_entered() -> void:
-	$ShopGUI/ItemDesc.text = "Warps you deeper down with only 1 move consumed. Each purchase adds 1 to your teleport item count."
+	$ShopGUI/ItemDesc.text = "Warps you deeper down with only 1 stamina consumed. Each purchase adds 1 to your teleport item count."
 func _on_t_ps_mouse_exited() -> void:
 	$ShopGUI/ItemDesc.text = ""
 
@@ -289,7 +289,7 @@ func _on_t_ppower_mouse_exited() -> void:
 	$ShopGUI/ItemDesc.text = ""
 
 func _on_mult_mouse_entered() -> void:
-	$ShopGUI/ItemDesc.text = "Grants you increased ore yield for 1 move. Each purchase adds 1 to your multiplier count."
+	$ShopGUI/ItemDesc.text = "Grants you increased ore yield for your next tile mined. Each purchase adds 1 to your multiplier count."
 func _on_mult_mouse_exited() -> void:
 	$ShopGUI/ItemDesc.text = ""
 

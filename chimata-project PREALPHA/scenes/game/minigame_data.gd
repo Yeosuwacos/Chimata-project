@@ -46,7 +46,7 @@ func _ready():
 		
 	$mineWindow/Labels/ResourceBarsLeft/BombsLeft.value = bombs
 	if bombs != 0:
-		$mineWindow/Labels/ResourceBarsLeft/BombsLeft.max_value = mults
+		$mineWindow/Labels/ResourceBarsLeft/BombsLeft.max_value = bombs
 		
 	$mineWindow/Labels/ResourceBarsRight/TPsLeft.value = tps
 	if tps != 0:

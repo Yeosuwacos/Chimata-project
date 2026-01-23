@@ -2,7 +2,7 @@ extends Node2D
 
 #Prepares the shop for when it is opened
 func _ready():
-	$ShopGrid/MovesText.text = "+25  moves: " + str(floori(Prices.MoreMoves))
+	$ShopGrid/MovesText.text = "+25 stamina: " + str(floori(Prices.MoreMoves))
 	
 	if Global.multQty == 10:
 		$ShopGrid/MultText.text = "+1 ore multiplier: MAX"
