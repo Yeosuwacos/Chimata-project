@@ -156,6 +156,10 @@ func _on_moves_pressed() -> void:
 		$ShopGUI/Characters/Momoyo.texture = momoyoHappy
 		$UI/Funds.text = str(floori(Global.funds))
 
+#Special upgrades panel
+func _on_special_upgrades_pressed() -> void:
+	pass 
+
 func _on_mult_pressed() -> void:
 	if Global.funds >= Prices.Mult:
 		Global.funds -= Prices.Mult
@@ -347,6 +351,6 @@ func _on_frenzy_power_mouse_entered() -> void:
 	$ShopGUI/ItemDesc.text = "Increases Momoyo's frenzy strength. Each purchase increases depth by 3"
 func _on_frenzy_power_mouse_exited() -> void:
 	$ShopGUI/ItemDesc.text = ""
-	
+
 func _exit_tree():
 	Save.saveGame()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b00kh2h5kbxj1"]
+[gd_scene format=3 uid="uid://b00kh2h5kbxj1"]
 
 [ext_resource type="Script" uid="uid://brc20ms50tw2o" path="res://scenes/game/market.gd" id="1_hpopc"]
 [ext_resource type="PackedScene" uid="uid://cs0ie4yghnk43" path="res://scenes/menu/gui.tscn" id="2_cn1e3"]
@@ -13,339 +13,339 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1wap"]
 size = Vector2(32, 300)
 
-[node name="Market" type="Node2D"]
+[node name="Market" type="Node2D" unique_id=1925169533]
 script = ExtResource("1_hpopc")
 
-[node name="Background" type="Parallax2D" parent="."]
+[node name="Background" type="Parallax2D" parent="." unique_id=1442117076]
 repeat_size = Vector2(128, 128)
 repeat_times = 40
 
-[node name="bgDirt" type="Sprite2D" parent="Background"]
+[node name="bgDirt" type="Sprite2D" parent="Background" unique_id=1847105220]
 texture = ExtResource("2_j1wap")
 
-[node name="MarketZones" type="Node2D" parent="."]
+[node name="MarketZones" type="Node2D" parent="." unique_id=1430635170]
 script = ExtResource("3_s7log")
 
-[node name="gotoMine" type="RayCast2D" parent="MarketZones"]
+[node name="gotoMine" type="RayCast2D" parent="MarketZones" unique_id=684583477]
 target_position = Vector2(0, 1500)
 
-[node name="gotoWorkshop" type="RayCast2D" parent="MarketZones"]
+[node name="gotoWorkshop" type="RayCast2D" parent="MarketZones" unique_id=647249810]
 target_position = Vector2(0, 1500)
 
-[node name="SellingSystem" type="Node2D" parent="."]
+[node name="SellingSystem" type="Node2D" parent="." unique_id=1224094584]
 script = ExtResource("3_cn1e3")
 
-[node name="BG" type="ColorRect" parent="SellingSystem"]
+[node name="BG" type="ColorRect" parent="SellingSystem" unique_id=1528015147]
 visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.4660673, 0.17293522, 0.009066197, 1)
 
-[node name="minigameGUI" type="Node2D" parent="SellingSystem"]
+[node name="minigameGUI" type="Node2D" parent="SellingSystem" unique_id=1845303143]
 
-[node name="Bartering" type="Node2D" parent="SellingSystem/minigameGUI"]
+[node name="Bartering" type="Node2D" parent="SellingSystem/minigameGUI" unique_id=1956660186]
 
-[node name="Cashout" type="Button" parent="SellingSystem/minigameGUI/Bartering"]
+[node name="Cashout" type="Button" parent="SellingSystem/minigameGUI/Bartering" unique_id=138507668]
 visible = false
 offset_right = 32.0
 offset_bottom = 32.0
 
-[node name="HigherLower" type="Node2D" parent="SellingSystem/minigameGUI/Bartering"]
+[node name="HigherLower" type="Node2D" parent="SellingSystem/minigameGUI/Bartering" unique_id=1342946027]
 visible = false
 position = Vector2(0, 300)
 
-[node name="Higher" type="Button" parent="SellingSystem/minigameGUI/Bartering/HigherLower"]
+[node name="Higher" type="Button" parent="SellingSystem/minigameGUI/Bartering/HigherLower" unique_id=1514021434]
 offset_right = 32.0
 offset_bottom = 32.0
 text = "+"
 
-[node name="Lower" type="Button" parent="SellingSystem/minigameGUI/Bartering/HigherLower"]
+[node name="Lower" type="Button" parent="SellingSystem/minigameGUI/Bartering/HigherLower" unique_id=2018004876]
 offset_top = 32.0
 offset_right = 32.0
 offset_bottom = 64.0
 text = "-"
 
-[node name="Card1" type="Label" parent="SellingSystem/minigameGUI/Bartering/HigherLower"]
+[node name="Card1" type="Label" parent="SellingSystem/minigameGUI/Bartering/HigherLower" unique_id=630602194]
 offset_left = 32.0
 offset_right = 72.0
 offset_bottom = 23.0
 
-[node name="Card2" type="Label" parent="SellingSystem/minigameGUI/Bartering/HigherLower"]
+[node name="Card2" type="Label" parent="SellingSystem/minigameGUI/Bartering/HigherLower" unique_id=1608725602]
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 72.0
 offset_bottom = 55.0
 
-[node name="Blackjack" type="Node2D" parent="SellingSystem/minigameGUI/Bartering"]
+[node name="Blackjack" type="Node2D" parent="SellingSystem/minigameGUI/Bartering" unique_id=1972649688]
 visible = false
 position = Vector2(300, 300)
 
-[node name="Hit" type="Button" parent="SellingSystem/minigameGUI/Bartering/Blackjack"]
+[node name="Hit" type="Button" parent="SellingSystem/minigameGUI/Bartering/Blackjack" unique_id=1883709057]
 offset_right = 112.0
 offset_bottom = 32.0
 text = "Hit"
 
-[node name="DDown" type="Button" parent="SellingSystem/minigameGUI/Bartering/Blackjack"]
+[node name="DDown" type="Button" parent="SellingSystem/minigameGUI/Bartering/Blackjack" unique_id=1686684751]
 offset_top = 32.0
 offset_right = 112.0
 offset_bottom = 64.0
 text = "Double down"
 
-[node name="Stand" type="Button" parent="SellingSystem/minigameGUI/Bartering/Blackjack"]
+[node name="Stand" type="Button" parent="SellingSystem/minigameGUI/Bartering/Blackjack" unique_id=1637098396]
 offset_top = 64.0
 offset_right = 112.0
 offset_bottom = 96.0
 text = "Stand"
 
-[node name="PlayerNb" type="Label" parent="SellingSystem/minigameGUI/Bartering/Blackjack"]
+[node name="PlayerNb" type="Label" parent="SellingSystem/minigameGUI/Bartering/Blackjack" unique_id=977171780]
 offset_left = 120.0
 offset_right = 152.0
 offset_bottom = 32.0
 
-[node name="OpponentNb" type="Label" parent="SellingSystem/minigameGUI/Bartering/Blackjack"]
+[node name="OpponentNb" type="Label" parent="SellingSystem/minigameGUI/Bartering/Blackjack" unique_id=180412188]
 offset_left = 120.0
 offset_top = 32.0
 offset_right = 152.0
 offset_bottom = 64.0
 
-[node name="BlCards" type="Node2D" parent="SellingSystem/minigameGUI/Bartering/Blackjack"]
+[node name="BlCards" type="Node2D" parent="SellingSystem/minigameGUI/Bartering/Blackjack" unique_id=1862199647]
 position = Vector2(0, 96)
 
-[node name="YourCards" type="HBoxContainer" parent="SellingSystem/minigameGUI/Bartering/Blackjack/BlCards"]
+[node name="YourCards" type="HBoxContainer" parent="SellingSystem/minigameGUI/Bartering/Blackjack/BlCards" unique_id=811869457]
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.15, 0.15)
 
-[node name="MarisaCards" type="HBoxContainer" parent="SellingSystem/minigameGUI/Bartering/Blackjack/BlCards"]
+[node name="MarisaCards" type="HBoxContainer" parent="SellingSystem/minigameGUI/Bartering/Blackjack/BlCards" unique_id=1785565653]
 offset_top = 128.0
 offset_right = 40.0
 offset_bottom = 168.0
 scale = Vector2(0.15, 0.15)
 
-[node name="CardFlip" type="GridContainer" parent="SellingSystem/minigameGUI/Bartering"]
+[node name="CardFlip" type="GridContainer" parent="SellingSystem/minigameGUI/Bartering" unique_id=437258228]
 visible = false
 columns = 3
 
-[node name="Card1" type="Label" parent="SellingSystem/minigameGUI/Bartering/CardFlip"]
+[node name="Card1" type="Label" parent="SellingSystem/minigameGUI/Bartering/CardFlip" unique_id=1980744695]
 layout_mode = 2
 text = "Card 1"
 
-[node name="Card2" type="Label" parent="SellingSystem/minigameGUI/Bartering/CardFlip"]
+[node name="Card2" type="Label" parent="SellingSystem/minigameGUI/Bartering/CardFlip" unique_id=799747742]
 layout_mode = 2
 text = "Card 2"
 
-[node name="Card3" type="Label" parent="SellingSystem/minigameGUI/Bartering/CardFlip"]
+[node name="Card3" type="Label" parent="SellingSystem/minigameGUI/Bartering/CardFlip" unique_id=2083199571]
 layout_mode = 2
 text = "Card 3"
 
-[node name="Pick1" type="Button" parent="SellingSystem/minigameGUI/Bartering/CardFlip"]
+[node name="Pick1" type="Button" parent="SellingSystem/minigameGUI/Bartering/CardFlip" unique_id=356934286]
 layout_mode = 2
 text = "x"
 
-[node name="Pick2" type="Button" parent="SellingSystem/minigameGUI/Bartering/CardFlip"]
+[node name="Pick2" type="Button" parent="SellingSystem/minigameGUI/Bartering/CardFlip" unique_id=464989055]
 layout_mode = 2
 text = "x"
 
-[node name="Pick3" type="Button" parent="SellingSystem/minigameGUI/Bartering/CardFlip"]
+[node name="Pick3" type="Button" parent="SellingSystem/minigameGUI/Bartering/CardFlip" unique_id=673660716]
 layout_mode = 2
 text = "x"
 
-[node name="GUI" parent="SellingSystem" instance=ExtResource("2_cn1e3")]
+[node name="GUI" parent="SellingSystem" unique_id=1621343249 instance=ExtResource("2_cn1e3")]
 z_index = 4
 
-[node name="CardSale" type="Node2D" parent="SellingSystem"]
+[node name="CardSale" type="Node2D" parent="SellingSystem" unique_id=1237852921]
 
-[node name="Characters" type="Node2D" parent="SellingSystem/CardSale"]
+[node name="Characters" type="Node2D" parent="SellingSystem/CardSale" unique_id=1614425547]
 
-[node name="CallChara" type="HBoxContainer" parent="SellingSystem/CardSale/Characters"]
+[node name="CallChara" type="HBoxContainer" parent="SellingSystem/CardSale/Characters" unique_id=1700522166]
 offset_right = 12.0
 
-[node name="Reimu" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara"]
+[node name="Reimu" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara" unique_id=149824878]
 layout_mode = 2
 
-[node name="ReimuSale" type="Area2D" parent="SellingSystem/CardSale/Characters/CallChara/Reimu"]
+[node name="ReimuSale" type="Area2D" parent="SellingSystem/CardSale/Characters/CallChara/Reimu" unique_id=65728544]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SellingSystem/CardSale/Characters/CallChara/Reimu/ReimuSale"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SellingSystem/CardSale/Characters/CallChara/Reimu/ReimuSale" unique_id=1226101096]
 shape = SubResource("RectangleShape2D_j1wap")
 
-[node name="pressE" type="Sprite2D" parent="SellingSystem/CardSale/Characters/CallChara/Reimu/ReimuSale"]
+[node name="pressE" type="Sprite2D" parent="SellingSystem/CardSale/Characters/CallChara/Reimu/ReimuSale" unique_id=1054573879]
 visible = false
 z_index = 2
 texture = ExtResource("6_a3nyx")
 
-[node name="Sakuya" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara"]
+[node name="Sakuya" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara" unique_id=1920196552]
 layout_mode = 2
 
-[node name="SakuyaHiLo" type="Area2D" parent="SellingSystem/CardSale/Characters/CallChara/Sakuya"]
+[node name="SakuyaHiLo" type="Area2D" parent="SellingSystem/CardSale/Characters/CallChara/Sakuya" unique_id=484370794]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SellingSystem/CardSale/Characters/CallChara/Sakuya/SakuyaHiLo"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SellingSystem/CardSale/Characters/CallChara/Sakuya/SakuyaHiLo" unique_id=1370614708]
 shape = SubResource("RectangleShape2D_j1wap")
 
-[node name="pressE" type="Sprite2D" parent="SellingSystem/CardSale/Characters/CallChara/Sakuya/SakuyaHiLo"]
+[node name="pressE" type="Sprite2D" parent="SellingSystem/CardSale/Characters/CallChara/Sakuya/SakuyaHiLo" unique_id=2081314162]
 visible = false
 z_index = 2
 texture = ExtResource("6_a3nyx")
 
-[node name="Marisa" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara"]
+[node name="Marisa" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara" unique_id=666408589]
 layout_mode = 2
 
-[node name="MarisaBlackjack" type="Area2D" parent="SellingSystem/CardSale/Characters/CallChara/Marisa"]
+[node name="MarisaBlackjack" type="Area2D" parent="SellingSystem/CardSale/Characters/CallChara/Marisa" unique_id=733876673]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SellingSystem/CardSale/Characters/CallChara/Marisa/MarisaBlackjack"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SellingSystem/CardSale/Characters/CallChara/Marisa/MarisaBlackjack" unique_id=56349691]
 shape = SubResource("RectangleShape2D_j1wap")
 
-[node name="pressE" type="Sprite2D" parent="SellingSystem/CardSale/Characters/CallChara/Marisa/MarisaBlackjack"]
+[node name="pressE" type="Sprite2D" parent="SellingSystem/CardSale/Characters/CallChara/Marisa/MarisaBlackjack" unique_id=2037481183]
 visible = false
 z_index = 2
 texture = ExtResource("6_a3nyx")
 
-[node name="Sanae" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara"]
+[node name="Sanae" type="GridContainer" parent="SellingSystem/CardSale/Characters/CallChara" unique_id=723664073]
 layout_mode = 2
 
-[node name="SanaeCardFlip" type="Area2D" parent="SellingSystem/CardSale/Characters/CallChara/Sanae"]
+[node name="SanaeCardFlip" type="Area2D" parent="SellingSystem/CardSale/Characters/CallChara/Sanae" unique_id=2123318132]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SellingSystem/CardSale/Characters/CallChara/Sanae/SanaeCardFlip"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SellingSystem/CardSale/Characters/CallChara/Sanae/SanaeCardFlip" unique_id=343205088]
 shape = SubResource("RectangleShape2D_j1wap")
 
-[node name="pressE" type="Sprite2D" parent="SellingSystem/CardSale/Characters/CallChara/Sanae/SanaeCardFlip"]
+[node name="pressE" type="Sprite2D" parent="SellingSystem/CardSale/Characters/CallChara/Sanae/SanaeCardFlip" unique_id=1572077628]
 visible = false
 z_index = 2
 texture = ExtResource("6_a3nyx")
 
-[node name="Sprites" type="Node2D" parent="SellingSystem/CardSale/Characters"]
+[node name="Sprites" type="Node2D" parent="SellingSystem/CardSale/Characters" unique_id=1017677128]
 
-[node name="OpponentFrame" type="Sprite2D" parent="SellingSystem/CardSale/Characters/Sprites"]
+[node name="OpponentFrame" type="Sprite2D" parent="SellingSystem/CardSale/Characters/Sprites" unique_id=1984685451]
 visible = false
 z_index = 2
 texture = ExtResource("7_mmnd1")
 
-[node name="Sakuya" type="Sprite2D" parent="SellingSystem/CardSale/Characters/Sprites"]
+[node name="Sakuya" type="Sprite2D" parent="SellingSystem/CardSale/Characters/Sprites" unique_id=318060116]
 visible = false
 z_index = 1
 position = Vector2(8344, 2744)
 texture = ExtResource("5_fwmry")
 
-[node name="ChimataFrame" type="Sprite2D" parent="SellingSystem/CardSale/Characters/Sprites"]
+[node name="ChimataFrame" type="Sprite2D" parent="SellingSystem/CardSale/Characters/Sprites" unique_id=249397708]
 visible = false
 z_index = 2
 texture = ExtResource("7_mmnd1")
 
-[node name="Chimata" type="Sprite2D" parent="SellingSystem/CardSale/Characters/Sprites"]
+[node name="Chimata" type="Sprite2D" parent="SellingSystem/CardSale/Characters/Sprites" unique_id=1844620301]
 visible = false
 z_index = 1
 texture = ExtResource("7_e0t0h")
 
-[node name="dialogue" type="Label" parent="SellingSystem/CardSale/Characters"]
+[node name="dialogue" type="Label" parent="SellingSystem/CardSale/Characters" unique_id=246844024]
 visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Names" type="Node2D" parent="SellingSystem/CardSale/Characters"]
+[node name="Names" type="Node2D" parent="SellingSystem/CardSale/Characters" unique_id=1236091550]
 
-[node name="ChimataName" type="Label" parent="SellingSystem/CardSale/Characters/Names"]
+[node name="ChimataName" type="Label" parent="SellingSystem/CardSale/Characters/Names" unique_id=2041989266]
 visible = false
 z_index = 2
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Chimata"
 
-[node name="OpponentName" type="Label" parent="SellingSystem/CardSale/Characters/Names"]
+[node name="OpponentName" type="Label" parent="SellingSystem/CardSale/Characters/Names" unique_id=204549819]
 visible = false
 z_index = 2
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Sakuya"
 
-[node name="Buttons" type="Node2D" parent="SellingSystem/CardSale"]
+[node name="Buttons" type="Node2D" parent="SellingSystem/CardSale" unique_id=1508693055]
 visible = false
 
-[node name="AddRem" type="GridContainer" parent="SellingSystem/CardSale/Buttons"]
+[node name="AddRem" type="GridContainer" parent="SellingSystem/CardSale/Buttons" unique_id=1740708993]
 offset_right = 138.0
 offset_bottom = 171.0
 columns = 3
 
-[node name="addXs" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="addXs" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=1226622534]
 layout_mode = 2
 text = "+"
 
-[node name="remXs" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="remXs" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=887221868]
 layout_mode = 2
 text = "-"
 
-[node name="Xs" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="Xs" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=993984914]
 layout_mode = 2
 text = "Lesser card"
 
-[node name="addS" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="addS" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=622235335]
 layout_mode = 2
 text = "+"
 
-[node name="remS" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="remS" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=1652158252]
 layout_mode = 2
 text = "-"
 
-[node name="S" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="S" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=2068919859]
 layout_mode = 2
 text = "Card"
 
-[node name="addM" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="addM" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=1684551404]
 layout_mode = 2
 text = "+"
 
-[node name="remM" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="remM" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=530110859]
 layout_mode = 2
 text = "-"
 
-[node name="M" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="M" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=1316024154]
 layout_mode = 2
 text = "Greater card"
 
-[node name="addL" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="addL" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=482800234]
 layout_mode = 2
 text = "+"
 
-[node name="remL" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="remL" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=1893240643]
 layout_mode = 2
 text = "-"
 
-[node name="L" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="L" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=1723734464]
 layout_mode = 2
 text = "Special card"
 
-[node name="addXl" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="addXl" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=1480633847]
 layout_mode = 2
 text = "+"
 
-[node name="remXl" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="remXl" type="Button" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=1601631827]
 layout_mode = 2
 text = "-"
 
-[node name="Xl" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem"]
+[node name="Xl" type="Label" parent="SellingSystem/CardSale/Buttons/AddRem" unique_id=2113924555]
 layout_mode = 2
 text = "Quest card"
 
-[node name="Sell" type="Button" parent="SellingSystem/CardSale/Buttons"]
+[node name="Sell" type="Button" parent="SellingSystem/CardSale/Buttons" unique_id=2046905786]
 visible = false
 offset_top = 180.0
 offset_right = 64.0
 offset_bottom = 212.0
 text = "Sell"
 
-[node name="HiLo" type="Button" parent="SellingSystem/CardSale/Buttons"]
+[node name="HiLo" type="Button" parent="SellingSystem/CardSale/Buttons" unique_id=1533293043]
 visible = false
 offset_top = 180.0
 offset_right = 64.0
 offset_bottom = 212.0
 text = "HiLo"
 
-[node name="Blackjack" type="Button" parent="SellingSystem/CardSale/Buttons"]
+[node name="Blackjack" type="Button" parent="SellingSystem/CardSale/Buttons" unique_id=1646534820]
 visible = false
 offset_top = 180.0
 offset_right = 64.0
 offset_bottom = 212.0
 text = "Black"
 
-[node name="CardFlip" type="Button" parent="SellingSystem/CardSale/Buttons"]
+[node name="CardFlip" type="Button" parent="SellingSystem/CardSale/Buttons" unique_id=353012500]
 visible = false
 offset_top = 180.0
 offset_right = 64.0

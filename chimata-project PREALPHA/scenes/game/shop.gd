@@ -4,6 +4,8 @@ extends Node2D
 func _ready():
 	$ShopGrid/MovesText.text = "+25 stamina: " + str(floori(Prices.MoreMoves))
 	
+	$ShopGrid/SpecialUpgradesText.text = "Special upgrades"
+	
 	if Global.multQty == 10:
 		$ShopGrid/MultText.text = "+1 ore multiplier: MAX"
 	else:
