@@ -65,16 +65,15 @@ offset_right = 32.0
 offset_bottom = 64.0
 text = "-"
 
-[node name="Card1" type="Label" parent="SellingSystem/minigameGUI/Bartering/HigherLower" unique_id=630602194]
+[node name="Cards" type="VBoxContainer" parent="SellingSystem/minigameGUI/Bartering/HigherLower" unique_id=1775192950]
 offset_left = 32.0
 offset_right = 72.0
 offset_bottom = 23.0
+scale = Vector2(0.25, 0.25)
 
-[node name="Card2" type="Label" parent="SellingSystem/minigameGUI/Bartering/HigherLower" unique_id=1608725602]
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 72.0
-offset_bottom = 55.0
+[node name="CardText" type="Label" parent="SellingSystem/minigameGUI/Bartering/HigherLower" unique_id=1530849911]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="Blackjack" type="Node2D" parent="SellingSystem/minigameGUI/Bartering" unique_id=1972649688]
 visible = false

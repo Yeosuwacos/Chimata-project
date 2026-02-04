@@ -172,8 +172,6 @@ func _on_sanae_card_flip_body_exited(_body) -> void:
 	currentHover = ""
 	$CardSale/Characters/CallChara/Sanae/SanaeCardFlip/pressE.visible = false
 
-
-
 #Adding or removing cards for sale
 
 #Xs
@@ -262,27 +260,27 @@ func HigherLower(wager):
 	while Global.nb2 == Global.nb1:
 		Global.nb2 = randi_range(1,12)
 	
-	$minigameGUI/Bartering/HigherLower/Card1.text = str(Global.nb1)
+	$minigameGUI/Bartering/HigherLower/Cards.add_child(DisplayCard(Global.nb1))
 	
 #Variables for the higher-lower minigame
 func _on_higher_pressed() -> void:
-	$minigameGUI/Bartering/HigherLower/Card2.text = str(Global.nb2)
+	$minigameGUI/Bartering/HigherLower/Cards.add_child(DisplayCard(Global.nb2))
 	if Global.nb1 < Global.nb2:
 		Global.wager *= 1.25
-		$minigameGUI/Bartering/HigherLower/Card2.text += ": Win!"
+		$minigameGUI/Bartering/HigherLower/CardText.text += ": Win!"
 	elif Global.nb1 > Global.nb2:
 		Global.wager *= 0.75
-		$minigameGUI/Bartering/HigherLower/Card2.text += ": Lose!"
+		$minigameGUI/Bartering/HigherLower/CardText.text += ": Lose!"
 	$minigameGUI/Bartering/Cashout.visible = true
 
 func _on_lower_pressed() -> void:
-	$minigameGUI/Bartering/HigherLower/Card2.text = str(Global.nb2)
+	$minigameGUI/Bartering/HigherLower/Cards.add_child(DisplayCard(Global.nb2))
 	if Global.nb1 > Global.nb2:
 		Global.wager *= 1.25
-		$minigameGUI/Bartering/HigherLower/Card2.text += ": Win!"
+		$minigameGUI/Bartering/HigherLower/CardText.text += ": Win!"
 	elif Global.nb1 < Global.nb2:
 		Global.wager *= 0.75
-		$minigameGUI/Bartering/HigherLower/Card2.text += ": Lose!"
+		$minigameGUI/Bartering/HigherLower/CardText.text += ": Lose!"
 	$minigameGUI/Bartering/Cashout.visible = true
 
 #Blackjack minigame
@@ -304,10 +302,10 @@ func Blackjack(wager):
 	Global.marisaHand = starterCard1 + starterCard2
 	$minigameGUI/Bartering/Blackjack/PlayerNb.text = str(Global.playerHand)
 	$minigameGUI/Bartering/Blackjack/OpponentNb.text = str(Global.marisaHand)
-	$minigameGUI/Bartering/Blackjack/BlCards/YourCards.add_child(BlDisplayCard(starterCard1))
-	$minigameGUI/Bartering/Blackjack/BlCards/YourCards.add_child(BlDisplayCard(starterCard2))
-	$minigameGUI/Bartering/Blackjack/BlCards/MarisaCards.add_child(BlDisplayCard(starterCard1))
-	$minigameGUI/Bartering/Blackjack/BlCards/MarisaCards.add_child(BlDisplayCard(starterCard2))
+	$minigameGUI/Bartering/Blackjack/BlCards/YourCards.add_child(DisplayCard(starterCard1))
+	$minigameGUI/Bartering/Blackjack/BlCards/YourCards.add_child(DisplayCard(starterCard2))
+	$minigameGUI/Bartering/Blackjack/BlCards/MarisaCards.add_child(DisplayCard(starterCard1))
+	$minigameGUI/Bartering/Blackjack/BlCards/MarisaCards.add_child(DisplayCard(starterCard2))
 	
 #Hitting adds a card while doubling down adds two and ends the turn
 	
@@ -316,7 +314,7 @@ func _on_hit_pressed() -> void:
 		var drawnCard = randi_range(1,10)
 		Global.playerHand += drawnCard
 		$minigameGUI/Bartering/Blackjack/PlayerNb.text = str(Global.playerHand)
-		$minigameGUI/Bartering/Blackjack/BlCards/YourCards.add_child(BlDisplayCard(drawnCard))
+		$minigameGUI/Bartering/Blackjack/BlCards/YourCards.add_child(DisplayCard(drawnCard))
 		checkBust()
 	
 func _on_d_down_pressed() -> void:
@@ -327,8 +325,8 @@ func _on_d_down_pressed() -> void:
 		Global.playerHand += drawnCard1
 		Global.playerHand += drawnCard2
 		$minigameGUI/Bartering/Blackjack/PlayerNb.text = str(Global.playerHand)
-		$minigameGUI/Bartering/Blackjack/BlCards/YourCards.add_child(BlDisplayCard(drawnCard1))
-		$minigameGUI/Bartering/Blackjack/BlCards/YourCards.add_child(BlDisplayCard(drawnCard2))
+		$minigameGUI/Bartering/Blackjack/BlCards/YourCards.add_child(DisplayCard(drawnCard1))
+		$minigameGUI/Bartering/Blackjack/BlCards/YourCards.add_child(DisplayCard(drawnCard2))
 		checkBust()
 
 func _on_stand_pressed() -> void:
@@ -337,7 +335,7 @@ func _on_stand_pressed() -> void:
 		var drawnCard =  randi_range(1,13)
 		Global.marisaHand += drawnCard
 		$minigameGUI/Bartering/Blackjack/OpponentNb.text = str(Global.marisaHand)
-		$minigameGUI/Bartering/Blackjack/BlCards/MarisaCards.add_child(BlDisplayCard(drawnCard))
+		$minigameGUI/Bartering/Blackjack/BlCards/MarisaCards.add_child(DisplayCard(drawnCard))
 		
 	if Global.marisaHand == Global.playerHand:
 		$minigameGUI/Bartering/Blackjack/PlayerNb.text += " - Draw!"
@@ -364,27 +362,6 @@ func checkBust():
 		$minigameGUI/Bartering/Cashout.visible = true
 	elif $minigameGUI/Bartering/Blackjack/DDown.disabled == true:
 		_on_stand_pressed()
-		
-#Creating and matching the right card to the sprites for display
-func BlDisplayCard(cardNo):
-	var card = TextureRect.new()
-	var png = null
-	match cardNo:
-		1: png = load("res://assets/game elements/BlCards/ace_of_spades.png")
-		2: png = load("res://assets/game elements/BlCards/2_of_spades.png")
-		3: png = load("res://assets/game elements/BlCards/3_of_spades.png")
-		4: png = load("res://assets/game elements/BlCards/4_of_spades.png")
-		5: png = load("res://assets/game elements/BlCards/5_of_spades.png")
-		6: png = load("res://assets/game elements/BlCards/6_of_spades.png")
-		7: png = load("res://assets/game elements/BlCards/7_of_spades.png")
-		8: png = load("res://assets/game elements/BlCards/8_of_spades.png")
-		9: png = load("res://assets/game elements/BlCards/9_of_spades.png")
-		10: png = load("res://assets/game elements/BlCards/10_of_spades.png")
-		11: png = load("res://assets/game elements/BlCards/jack_of_spades.png")
-		12: png = load("res://assets/game elements/BlCards/queen_of_spades.png")
-		13: png = load("res://assets/game elements/BlCards/king_of_spades.png")
-	card.texture = png
-	return card
 
 #Disables the buttons
 func disable():
@@ -475,6 +452,27 @@ func flipResult(value):
 	elif value < 1:
 		$CardSale/Characters/dialogue.text = "Misfortune! x" + str(value)
 
+#Creating and matching the right card to the sprites for display
+func DisplayCard(cardNo):
+	var card = TextureRect.new()
+	var png = null
+	match cardNo:
+		1: png = load("res://assets/game elements/BlCards/ace_of_spades.png")
+		2: png = load("res://assets/game elements/BlCards/2_of_spades.png")
+		3: png = load("res://assets/game elements/BlCards/3_of_spades.png")
+		4: png = load("res://assets/game elements/BlCards/4_of_spades.png")
+		5: png = load("res://assets/game elements/BlCards/5_of_spades.png")
+		6: png = load("res://assets/game elements/BlCards/6_of_spades.png")
+		7: png = load("res://assets/game elements/BlCards/7_of_spades.png")
+		8: png = load("res://assets/game elements/BlCards/8_of_spades.png")
+		9: png = load("res://assets/game elements/BlCards/9_of_spades.png")
+		10: png = load("res://assets/game elements/BlCards/10_of_spades.png")
+		11: png = load("res://assets/game elements/BlCards/jack_of_spades.png")
+		12: png = load("res://assets/game elements/BlCards/queen_of_spades.png")
+		13: png = load("res://assets/game elements/BlCards/king_of_spades.png")
+	card.texture = png
+	return card
+
 #Confirming a sale and updating the amount
 func sell(total):
 	Global.funds += total
@@ -497,8 +495,8 @@ func remove_stock():
 	Global.sold_l = 0
 	Global.sold_xl = 0
 	
-	$minigameGUI/Bartering/HigherLower/Card1.text = ""
-	$minigameGUI/Bartering/HigherLower/Card2.text = ""
+	var removeSakuyaCard = $minigameGUI/Bartering/HigherLower/Cards.get_children()
+	discard(removeSakuyaCard)
 	
 	$CardSale/Buttons/AddRem/Xs.text = "Lesser ability cards " + str(Global.sold_xs) + "/" + str(Global.ability_card_xs)
 	$CardSale/Buttons/AddRem/S.text = "Ability cards " + str(Global.sold_s) + "/" + str(Global.ability_card_s)
