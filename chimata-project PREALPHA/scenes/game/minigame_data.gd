@@ -78,7 +78,7 @@ func _ready():
 
 	#Places Chimata at the top of the mine
 	tilemap.set_cell(start, -1)
-	mine[50][0] = 0
+	mine[start.x][0] = -1
 	
 #Makes an inventory for all ores collected
 @onready var ore_xs = 0
@@ -96,7 +96,7 @@ func placeOres(startPos: Vector2i, type: int):
 	
 	while unfinished.size() > 0 && size > 0:
 		var pos = unfinished.pop_front()
-		if pos.x < 0 || pos.x >= 100 || pos.y < 0 || pos.y >= 500:
+		if pos.x < 0 || pos.x >= 200 || pos.y < 0 || pos.y >= 500:
 			continue
 		if finished.has(pos):
 			continue
