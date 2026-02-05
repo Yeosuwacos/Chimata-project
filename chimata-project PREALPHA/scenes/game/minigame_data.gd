@@ -113,7 +113,7 @@ func getTile():
 
 #Gets the tile Chimata is hovering on
 func hoverTile():
-	return Vector2i(chimata.position.x/tileSize,chimata.position.y/tileSize)
+	return Vector2i(chimata.position.x/tileSize + direct().x,chimata.position.y/tileSize + direct().y)
 #Turns Chimata's orientation into an axis
 func direct():
 	var orient = chimata.orient
@@ -154,16 +154,18 @@ func _physics_process(delta):
 		var target = hoverTile()
 		print("Mining tile: ", target, " value=", mine[target.x][target.y])
 		if mineTile(target,Global.addActive):
+			mineTile(target,Global.addActive)
 			moves -= 1
-		$mineWindow/Labels/ResourceBarsCenter.position.x = get_viewport_rect().size.x/2 - $mineWindow/Labels/ResourceBarsCenter.size.x/2
+		$mineWindow/Labels/ResourceBarsCenter.size.x = get_viewport_rect().size.x/2 - $mineWindow/Labels/ResourceBarsCenter.size.x/2
 	#Special actions
 	if Input.is_action_just_pressed("bomb") && bombs > 0:
 		var bombSignal = false
 		for i in range(-Global.bombStr,Global.bombStr+1):
 			for j in range(-Global.bombStr, Global.bombStr+1):
 				var pos = chimataPos + Vector2i(i,j)
-				if mineTile(pos, Global.add):
+				if mineTile(pos, Global.addActive) == true:
 					bombSignal = true
+					mineTile(pos, Global.addActive)
 		if bombSignal == true:
 			bombs -= 1
 			moves -= 1
@@ -184,13 +186,15 @@ func _physics_process(delta):
 		$mineWindow/Labels/ResourceBarsLeft/MultStrLeft.value -= 1
 			
 	if Input.is_action_just_pressed("frenzy") && frenzies > 0:
-		for depth in range(Global.frenzyStr):
-			mineTile(Vector2i(chimataPos.x - 1, chimataPos.y + depth), Global.addActive)
-			mineTile(Vector2i(chimataPos.x, chimataPos.y + depth), Global.addActive)
-			mineTile(Vector2i(chimataPos.x + 1, chimataPos.y + depth), Global.addActive)
-		frenzies -= 1
-		moves -= 1
-		$mineWindow/Labels/ResourceBarsRight/FrenziesLeft.value -= 1
+		var y = chimataPos.y + Global.frenzyStr
+		if y < 500:
+			for depth in range(Global.frenzyStr):
+				mineTile(Vector2i(chimataPos.x - 1, chimataPos.y + depth), Global.addActive)
+				mineTile(Vector2i(chimataPos.x, chimataPos.y + depth), Global.addActive)
+				mineTile(Vector2i(chimataPos.x + 1, chimataPos.y + depth), Global.addActive)
+			frenzies -= 1
+			moves -= 1
+			$mineWindow/Labels/ResourceBarsRight/FrenziesLeft.value -= 1
 	#Brings up the minigame end screen (stats and button)
 	if moves <= 0:
 		endGame()
@@ -203,7 +207,7 @@ func mineTile(pos,mult):
 	
 	#Mines the tile depending on value
 	var tileVal = mine[pos.x][pos.y]
-	if tileVal == 0:
+	if tileVal == -1:
 		return false
 
 	addOre(tileVal,mult)
