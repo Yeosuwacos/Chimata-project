@@ -5,6 +5,7 @@ extends Node2D
 @onready var tilemap = get_node("mineWindow/oreMap")
 @onready var chimataScene = preload("res://entities/characters/chimata.tscn")
 @onready var chimata = chimataScene.instantiate()
+@onready var cooldown = 0.2
 @export var ores : Array[Ores]
 const tileSize := 128
 var start = Vector2i(50,0)
@@ -127,6 +128,8 @@ func direct():
 #Uses special items if needed
 
 func _physics_process(delta):
+	if cooldown < 0.2:
+		cooldown += delta
 	if moves <= 0 || Global.isMining == false:
 		return
 	var chimataPos = getTile()
@@ -150,9 +153,9 @@ func _physics_process(delta):
 	chimata.move_and_slide()
 	
 	#Mining
-	if Input.is_action_just_pressed("confirm"):
+	if Input.is_action_pressed("confirm") && cooldown >= 0.2:
+		cooldown = 0.0
 		var target = hoverTile()
-		print("Mining tile: ", target, " value=", mine[target.x][target.y])
 		if mineTile(target,Global.addActive):
 			mineTile(target,Global.addActive)
 			moves -= 1
@@ -160,8 +163,8 @@ func _physics_process(delta):
 	#Special actions
 	if Input.is_action_just_pressed("bomb") && bombs > 0:
 		var bombSignal = false
-		for i in range(-Global.bombStr,Global.bombStr+1):
-			for j in range(-Global.bombStr, Global.bombStr+1):
+		for i in range(-Global.bombStr+1,Global.bombStr):
+			for j in range(-Global.bombStr+1, Global.bombStr):
 				var pos = chimataPos + Vector2i(i,j)
 				if mineTile(pos, Global.addActive) == true:
 					bombSignal = true
