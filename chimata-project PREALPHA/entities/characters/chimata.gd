@@ -17,13 +17,15 @@ func _physics_process(delta):
 		orient = direction
 		$Graphics/Sprite2D.flip_h = direction.x < 0
 	
-	#Movement
+	#Movement and lighting
 	velocity.x = direction.x * speed
 	
 	if Global.isMining:
+		$Graphics/Light.enabled = true
 		velocity.y += gravity * delta
 	else:
 		velocity.y = 0
+		$Graphics/Light.enabled = false
 		
 	if Input.is_action_just_pressed("walkUp") && is_on_floor():
 		velocity.y = -600
